@@ -3,10 +3,13 @@
 import pytest
 import yaml
 from conftest import FIXTURES, make_listing
+from dotenv import load_dotenv
 
+from deal_bot.config import ROOT
 from deal_bot.extract import ClaudeExtractor
 from deal_bot.store import Store
 
+load_dotenv(ROOT / ".env")
 CASES = yaml.safe_load((FIXTURES / "extraction_cases.yaml").read_text())
 
 

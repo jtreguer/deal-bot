@@ -17,7 +17,7 @@ from deal_bot.store import Store
 log = logging.getLogger(__name__)
 
 DEFAULT_MODEL = "claude-haiku-4-5"
-PROMPT_VERSION = "1"
+PROMPT_VERSION = "2"
 MAX_DESCRIPTION_CHARS = 20_000
 
 SYSTEM = """You read second-hand laptop listings from European marketplaces and return the \
@@ -28,6 +28,11 @@ or English, often machine-translated, with abbreviations ("32Go" = 32 GB, "1To" 
 Report what the listing claims, even when a claim looks wrong or impossible for the model. \
 Do not correct or complete values from your own knowledge of the product; downstream code \
 checks plausibility. Use null when the listing does not say.
+
+- cpu: give a full model number only when the listing writes one. "i7 13th gen" stays \
+"i7 13th gen"; never guess the exact part.
+- gpu: null when the listing does not mention graphics at all. Use "integrated" only when it \
+explicitly says integrated graphics, Intel Iris/Arc, or no dedicated GPU.
 
 Sources: the title, then the seller's structured fields, then the free-text description. \
 When they disagree on CPU, GPU, RAM, SSD or model, prefer the most specific statement and \
