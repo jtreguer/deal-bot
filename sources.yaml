@@ -1,0 +1,35 @@
+# Retail sources for phase 1. eBay is added once the developer keys arrive.
+shopify:
+  - name: cybist
+    base_url: https://cybist.com
+    country: GB
+    currency: GBP
+    price_includes_local_vat: true
+    export_zero_rated: unknown   # yes | no | unknown; unknown assumes UK VAT is not refunded
+    delivery: ships_fr
+    shipping_estimate_eur: 60    # ships abroad on quote only
+  # Wisetek's EU storefront (IE, EUR) had 5690s in the survey; its URL is still to be found.
+  # wisetekmarket.com is the US store and does not apply.
+woocommerce:
+  - name: silicon-connect
+    base_url: https://siliconconnect.co.uk
+    country: GB
+    currency: GBP
+    price_includes_local_vat: true
+    export_zero_rated: unknown
+    delivery: ships_fr
+    shipping_estimate_eur: 60
+  - name: estunt
+    base_url: https://www.estunt.nl
+    country: NL
+    currency: EUR
+    delivery: ships_fr
+    shipping_estimate_eur: 25
+  - name: dubbelgaaf
+    base_url: https://www.dubbelgaaf.nl
+    country: NL
+    currency: EUR
+    delivery: ships_fr
+    shipping_estimate_eur: 25
+refurbed:
+  domains: [fr, de, at, nl, it, be]

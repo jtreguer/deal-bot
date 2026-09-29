@@ -1,0 +1,47 @@
+# Real listing titles from the 2026-09-29 survey, with the values the extractor must return.
+# `null` means the listing does not state it. Keys are compared after normalization.
+- title: "Station de travail ordinateur portable Dell Precision 5680 i7 13e génération RTX 2000 ADA 32 Go RAM 512 Go"
+  expect: {model: precision-5680, cpu: null, ram_gb: 32, gpu: rtx-2000-ada, ssd_gb: 512}
+- title: "DELL précision 5680 I9-13900H 32GB 2TB16\" QWERTZ DE 301041944-CRO"
+  expect: {model: precision-5680, cpu: i9-13900h, ram_gb: 32, gpu: null, ssd_gb: 2000}
+- title: "DELL Precision 5680 I9-13900H 64 Go 16\" 2 To W11P QWERTY Royaume-Uni 210-BGWL"
+  expect: {model: precision-5680, cpu: i9-13900h, ram_gb: 64, gpu: null, ssd_gb: 2000}
+- title: "Dell Precision 5680,16\",i7-13700H,32 Go,512 Go SSD,8 Go RTX2000 ada, tactile, UHD+,3 ans"
+  expect: {model: precision-5680, cpu: i7-13700h, ram_gb: 32, gpu: rtx-2000-ada, ssd_gb: 512, screen: uhd_plus_oled}
+- title: "Dell Precision 5680 X2W33 16\" UHD+ OLED tactile i9-13900H 32 Go 1 To 3500 ADA W11P"
+  expect: {model: precision-5680, cpu: i9-13900h, ram_gb: 32, gpu: rtx-3500-ada, ssd_gb: 1000, screen: uhd_plus_oled}
+- title: "Dell Precision 5680 | i7-13800H | 32 Go DDR5 | RTX 2000 Ada (8 Go) | 1 To Lexar NM790"
+  expect: {model: precision-5680, cpu: i7-13800h, ram_gb: 32, gpu: rtx-2000-ada, ssd_gb: 1000}
+- title: "Dell Precision 5680 (16\", 4K OLED, i9, 64 Go, SSD 1 To, RTX 3500 ADA)"
+  expect: {model: precision-5680, cpu: null, ram_gb: 64, gpu: rtx-3500-ada, ssd_gb: 1000, screen: uhd_plus_oled}
+- title: "Dell Precision 5680 16\" Touch 4K+ OLED i9-13900H 64 Go DDR5-6000 1 To RTX 4090 NEUF"
+  expect: {model: precision-5680, cpu: i9-13900h, ram_gb: 64, gpu: rtx-4090, ssd_gb: 1000}
+- title: "Dell Precision 5680 16\" WUXGA i9-13900H 32 Go DDR5-6000 2 To RTX 2000 Ada IR FPR"
+  expect: {model: precision-5680, cpu: i9-13900h, ram_gb: 32, gpu: rtx-2000-ada, ssd_gb: 2000, screen: fhd_plus}
+- title: "Dell Precision 5690 * Intel Ultra 9 185H * 32GB RAM * 1TB SSD * 16\" Workstation"
+  expect: {model: precision-5690, cpu: core-ultra-9-185h, ram_gb: 32, gpu: null, ssd_gb: 1000}
+- title: "Dell Precision 5690 16\" 4K OLED Touch - Ultra 9 185H, 64GB RAM 2TB, RTX 2000 Ada"
+  expect: {model: precision-5690, cpu: core-ultra-9-185h, ram_gb: 64, gpu: rtx-2000-ada, ssd_gb: 2000, screen: uhd_plus_oled}
+- title: "Dell Precision 5690 64GB RAM 512GB Ultra 7 165H NVIDA RTX 2000 Warranty 5/13/28"
+  expect: {model: precision-5690, cpu: core-ultra-7-165h, ram_gb: 64, gpu: rtx-2000-ada, ssd_gb: 512}
+- title: "Dell 5690 16\" Intel Ultra 7 165H Touch OLED 32GB RAM 1tb Ssd WORTH 2x ASK PRICE"
+  expect: {model: precision-5690, cpu: core-ultra-7-165h, ram_gb: 32, gpu: null, ssd_gb: 1000, screen: uhd_plus_oled}
+- title: "Dell Precision 5690 JGYGG 16\" FHD Ultra7 165H 32GB 1TB RTX 2000 ADA 8GB W11P 3J."
+  expect: {model: precision-5690, cpu: core-ultra-7-165h, ram_gb: 32, gpu: rtx-2000-ada, ssd_gb: 1000}
+- title: "Dell Precision 5680 -15.6 NVIDIA RTX 2000 Ada Generation 13th Gen Intel Core i7"
+  expect: {model: precision-5680, cpu: null, ram_gb: null, gpu: rtx-2000-ada, ssd_gb: null}
+- title: "Dell Precision 5690 Ultra 7 155H 32GB RAM 512GB SSD, RTX 2000 Ada FHD Win11, WTY"
+  expect: {model: precision-5690, cpu: core-ultra-7-155h, ram_gb: 32, gpu: rtx-2000-ada, ssd_gb: 512, screen: fhd_plus}
+- title: "NVIDIA RTX4090 DELL Precision 5680 Workstation i7-13800H 64GB DDR5 1TB M.2 SSD"
+  expect: {model: precision-5680, cpu: i7-13800h, ram_gb: 64, gpu: rtx-4090, ssd_gb: 1000}
+- title: "Dell Precision 5680 i7-13800H 32GB RTX 2000 Ada 1 TB Lexar NM790"
+  expect: {model: precision-5680, cpu: i7-13800h, ram_gb: 32, gpu: rtx-2000-ada, ssd_gb: 1000}
+- title: "Dell Precision 5690 Ultra 7 32GB 1TB RTX 2000 Ada"
+  expect: {model: precision-5690, cpu: null, ram_gb: 32, gpu: rtx-2000-ada, ssd_gb: 1000}
+- title: "Dell Precision 5680 16\" FHD+ Laptop - i7-13700H, RTX 2000 ADA (Refurbished - Excellent) / i7-13700H / RTX 2000 ADA / 16\" FHD+ / 32GB / 2TB / Refurbished - Excellent"
+  expect: {model: precision-5680, cpu: i7-13700h, ram_gb: 32, gpu: rtx-2000-ada, ssd_gb: 2000, screen: fhd_plus, condition: refurb_excellent}
+- title: "Dell Precision 5680 | i7-13800H | 16\""
+  structured: {Grafikkarte: Intel Iris Xe Graphics, "Arbeitsspeicher Größe": "16.0 GB", Speicherplatz: 512 GB, Bildschirmauflösung: 1920 x 1200 (WUXGA)}
+  expect: {model: precision-5680, cpu: i7-13800h, ram_gb: 16, gpu: integrated, ssd_gb: 512, screen: fhd_plus}
+- title: "Dell Precision 5690 Palmrest UK Backlit Layout C9FMN"
+  expect: {is_complete_laptop: false}

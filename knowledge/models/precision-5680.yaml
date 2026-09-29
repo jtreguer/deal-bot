@@ -1,0 +1,16 @@
+# Sources: Dell Precision 5680 owner's manual (memory: integrated LPDDR5, not upgradeable),
+# StorageReview 5680 review (GPU and display options). Checked 2026-09-29.
+key: precision-5680
+label: Dell Precision 5680
+brand: dell
+release_year: 2023
+aliases:
+  - 'pr[ée]cision\s*(16\s*)?-?\s*5680'
+  - '\bm5680\b'
+  - 'dell\s*5680'
+ram_soldered: true
+ram_gb: [16, 32, 64]
+cpus: [i5-13600h, i7-13700h, i7-13800h, i9-13900h]
+gpus: [integrated, rtx-a1000, rtx-2000-ada, rtx-3500-ada, rtx-4000-ada, rtx-5000-ada]
+screens: [fhd_plus, uhd_plus_oled]
+screen_inches: 16

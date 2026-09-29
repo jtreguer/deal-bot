@@ -1,0 +1,16 @@
+# Sources: Dell Precision 5690 owner's manual (memory: onboard LPDDR5x) and Dell product
+# page (GPU options). Checked 2026-09-29.
+key: precision-5690
+label: Dell Precision 5690
+brand: dell
+release_year: 2024
+aliases:
+  - 'pr[ée]cision\s*(16\s*)?-?\s*5690'
+  - '\bm5690\b'
+  - 'dell\s*5690'
+ram_soldered: true
+ram_gb: [16, 32, 64]
+cpus: [core-ultra-5-135h, core-ultra-7-155h, core-ultra-7-165h, core-ultra-9-185h]
+gpus: [integrated, rtx-1000-ada, rtx-2000-ada, rtx-3500-ada, rtx-4000-ada, rtx-5000-ada]
+screens: [fhd_plus, uhd_plus_oled]
+screen_inches: 16

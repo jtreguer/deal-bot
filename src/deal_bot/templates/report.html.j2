@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ r.target.name }} deals</title>
+<style>
+:root {
+  --bg: #fbfaf7; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6a66; --line: #e4e1da;
+  --good: #1f7a4d; --warn: #9a6400; --bad: #b3261e; --accent: #2b5fb8; --chip: #f1eee7;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #141413; --panel: #1d1d1b; --ink: #ecebe6; --muted: #a09e97; --line: #34332f;
+          --good: #5cc28f; --warn: #e0a84a; --bad: #f07a70; --accent: #7aa7f0; --chip: #2a2926; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+       font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1400px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 32px 0 8px; }
+.sub { color: var(--muted); margin: 0 0 16px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.card b { display: block; font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; min-width: 1100px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--panel); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+a { color: var(--accent); }
+.good { color: var(--good); } .warn { color: var(--warn); } .bad { color: var(--bad); }
+.chip { display: inline-block; background: var(--chip); border-radius: 4px; padding: 0 6px; margin: 1px 2px 1px 0; font-size: 12px; }
+details summary { cursor: pointer; color: var(--muted); font-size: 12px; }
+details ul { margin: 4px 0 0; padding-left: 16px; font-size: 12px; color: var(--muted); }
+.small { font-size: 12px; color: var(--muted); }
+ul.plain { list-style: none; padding: 0; margin: 0; }
+ul.plain li { padding: 4px 0; border-bottom: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<main>
+<h1>{{ r.target.name }}: best deals</h1>
+<p class="sub">Run {{ generated }} · prices landed in France, VAT included · ECB rates of {{ r.rates.day }}
+  (1 GBP = {{ "%.4f"|format(gbp) }} EUR)</p>
+
+<div class="cards">
+  <div class="card"><b>Sources</b>
+    <ul class="plain">{% for name, st in r.source_status.items() %}
+      <li><span class="{{ 'good' if st.startswith('ok') else 'bad' }}">{{ name }}</span> <span class="small">{{ st }}</span></li>
+    {% endfor %}</ul>
+  </div>
+  <div class="card"><b>Market (passing listings, landed €)</b>
+    <ul class="plain">{% for gpu, n, lo, hi in r.market_bands() %}
+      <li>{{ gpu }}: {{ n }} × {{ "%.0f"|format(lo) }}–{{ "%.0f"|format(hi) }}</li>
+    {% else %}<li class="small">no passing listings</li>{% endfor %}</ul>
+  </div>
+  <div class="card"><b>Counts</b>
+    <ul class="plain">
+      <li>{{ r.ranked|length }} ranked</li>
+      <li>{{ r.suspicious|length }} suspicious</li>
+      <li>{{ r.held|length }} need confirmation</li>
+      <li>{{ r.rejected_tally.total() }} discarded</li>
+    </ul>
+  </div>
+</div>
+
+{% macro rows(items, show_rank) %}
+<div class="scroll"><table>
+<thead><tr>
+  {% if show_rank %}<th>#</th>{% endif %}
+  <th>Landed €</th><th>Fair €</th><th>Discount</th><th>Risk</th><th>Listing</th>
+  <th>Config</th><th>Condition</th><th>Seller</th><th>Delivery</th>
+</tr></thead>
+<tbody>
+{% for s in items %}{% set sp = s.spec %}{% set v = s.validation %}
+<tr>
+  {% if show_rank %}<td class="num">{{ loop.index }}</td>{% endif %}
+  <td class="num">{% if s.landed %}{{ "%.0f"|format(s.landed.total_eur) }}{% if s.landed.estimated %}<span class="warn" title="includes estimated parts">*</span>{% endif %}
+    <details><summary>how</summary><ul>
+      {% for label, amt, est in s.landed.parts %}<li>{{ label }}: {{ "%.2f"|format(amt) }}{% if est %} (est.){% endif %}</li>{% endfor %}
+      {% for n in s.landed.notes %}<li>{{ n }}</li>{% endfor %}
+    </ul></details>{% endif %}</td>
+  <td class="num">{% if s.fair %}{{ "%.0f"|format(s.fair.value_eur) }}
+    <details><summary>how</summary><ul>
+      {% for label, amt in s.fair.parts %}<li>{{ label }}: {{ "%+.0f"|format(amt) }}</li>{% endfor %}
+      {% for a in s.fair.assumptions %}<li>{{ a }}</li>{% endfor %}
+    </ul></details>{% endif %}</td>
+  <td class="num {{ 'good' if (s.discount or 0) > 0.1 else ('bad' if (s.discount or 0) < 0 else '') }}">
+    {% if s.discount is not none %}{{ "%.0f"|format(s.discount * 100) }}%{% endif %}
+    {% if s.adjusted_discount is not none %}<div class="small">adj. {{ "%.0f"|format(s.adjusted_discount * 100) }}%</div>{% endif %}</td>
+  <td class="num {{ 'bad' if s.risk >= 60 else ('warn' if s.risk >= 30 else 'good') }}">{{ s.risk }}
+    {% if s.risk_reasons %}<details><summary>why</summary><ul>{% for x in s.risk_reasons %}<li>{{ x }}</li>{% endfor %}</ul></details>{% endif %}</td>
+  <td><a href="{{ s.raw.url }}" target="_blank" rel="noopener">{{ s.raw.title[:110] }}</a>
+    <div class="small">{{ s.raw.source }}{% if s.raw.is_auction %} · auction, {{ s.raw.bids or 0 }} bids{% if s.raw.auction_ends_at %}, ends {{ s.raw.auction_ends_at.strftime('%d %b %H:%M') }}{% endif %}{% endif %}</div>
+    {% for d in s.duplicates %}<div class="small">also listed as {{ d }}</div>{% endfor %}
+    {% for x in s.verdict_reasons %}<div class="small warn">{{ x }}</div>{% endfor %}</td>
+  <td>{% if sp %}
+    <span class="chip">{{ v.model_key or sp.model or '?' }}</span>
+    <span class="chip">{{ v.cpu_key or sp.cpu or 'CPU ?' }}</span>
+    <span class="chip">{{ sp.ram_gb ~ ' GB' if sp.ram_gb else 'RAM ?' }}</span>
+    <span class="chip">{{ v.gpu_key or sp.gpu or 'GPU ?' }}</span>
+    <span class="chip">{{ (sp.ssd_gb ~ ' GB SSD') if sp.ssd_gb else 'SSD ?' }}</span>
+    <span class="chip">{{ sp.screen.value }}</span>
+    {% if sp.keyboard_layout %}<span class="chip">{{ sp.keyboard_layout }}</span>{% endif %}
+    {% else %}<span class="small">{{ s.extraction_error }}</span>{% endif %}</td>
+  <td>{% if sp %}{{ sp.condition.value }}
+    {% if sp.warranty_until %}<div class="small">warranty to {{ sp.warranty_until }}</div>{% elif sp.warranty_months %}<div class="small">{{ sp.warranty_months }} months warranty</div>{% endif %}
+    {% if sp.battery_cycles %}<div class="small">{{ sp.battery_cycles }} cycles</div>{% endif %}
+    {% if sp.charger_included == false %}<div class="small warn">no charger</div>{% endif %}{% endif %}</td>
+  <td>{{ s.raw.seller.name or '?' }}<div class="small">{{ s.raw.seller.type.value }}{% if s.raw.seller.feedback_count is not none %} · {{ s.raw.seller.feedback_count }} fb{% endif %}{% if s.raw.seller.feedback_pct %} · {{ s.raw.seller.feedback_pct }}%{% endif %}</div></td>
+  <td>{{ s.raw.delivery.value }}<div class="small">{{ s.raw.location.country }}{% if s.raw.location.city %}, {{ s.raw.location.city }}{% endif %}{% if s.pickup_zone %} · zone {{ s.pickup_zone }}{% endif %} · {{ s.raw.protection.value }}</div></td>
+</tr>
+{% endfor %}
+</tbody></table></div>
+{% endmacro %}
+
+<h2>Ranked</h2>
+{% if r.ranked %}{{ rows(r.ranked, true) }}{% else %}<p class="small">Nothing passes every filter in this run.</p>{% endif %}
+
+{% if r.suspicious %}<h2>Suspicious (risk ≥ {{ r.target.ranking.suspicious_risk }})</h2>{{ rows(r.suspicious, false) }}{% endif %}
+
+{% if r.held %}<h2>Needs confirmation from the seller</h2>{{ rows(r.held, false) }}{% endif %}
+
+<h2>Discarded</h2>
+<div class="card"><ul class="plain">
+{% for reason, n in r.rejected_tally.most_common() %}<li>{{ n }} × {{ reason }}</li>{% else %}<li class="small">none</li>{% endfor %}
+</ul></div>
+
+{% if manual_links %}
+<h2>Check by hand</h2>
+<div class="card"><ul class="plain">
+{% for label, url in manual_links %}<li><a href="{{ url }}" target="_blank" rel="noopener">{{ label }}</a></li>{% endfor %}
+</ul></div>
+{% endif %}
+</main>
+</body>
+</html>

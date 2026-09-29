@@ -1,0 +1,30 @@
+# Fair-value priors in EUR, landed in France, VAT included.
+# Starting guesses from the 2026-09-29 survey; phase 3 recalibrates them from history.
+base:
+  precision-5680: 1250
+  precision-5690: 1350
+# Reference config the base price describes. Deltas are relative to it.
+reference: {cpu_class: i7, ram_gb: 32, gpu: rtx-2000-ada, screen: fhd_plus, ssd_gb: 1000, condition: used_good}
+gpu:
+  rtx-1000-ada: -300
+  rtx-a1000: -300
+  integrated: -500
+  rtx-2000-ada: 0
+  rtx-3500-ada: 550
+  rtx-4000-ada: 750
+  rtx-5000-ada: 1000
+cpu_class: {i5: -100, i7: 0, i9: 80, ultra-5: -100, ultra-7: 0, ultra-9: 80}
+ram_gb: {16: -250, 32: 0, 64: 200}
+screen: {fhd_plus: 0, uhd_plus_oled: 150}
+ssd_per_tb: 60
+condition:
+  new: 900
+  open_box: 500
+  refurb_excellent: 150
+  refurb_good: 100
+  refurb_fair: -50
+  used_like_new: 50
+  used_good: 0
+  used_fair: -100
+  unknown: 0
+warranty_per_month: 15

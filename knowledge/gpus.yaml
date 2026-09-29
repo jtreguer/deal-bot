@@ -1,0 +1,14 @@
+# Ordered: the first matching pattern wins. Patterns run on the lowercased GPU string.
+# `warn` marks names that do not exist as products; the listing is kept but its risk rises.
+- {key: rtx-2000-ada, pattern: '\ba\s*2000\s*ada', warn: "'RTX A2000 Ada' is not a real GPU name"}
+- {key: rtx-5000-ada, pattern: '5000\s*ada'}
+- {key: rtx-4000-ada, pattern: '4000\s*ada'}
+- {key: rtx-3500-ada, pattern: '3500\s*ada|rtx\s*3500'}
+- {key: rtx-2000-ada, pattern: '2000\s*ada'}
+- {key: rtx-1000-ada, pattern: '1000\s*ada'}
+- {key: rtx-a1000, pattern: '\ba\s*-?\s*1000'}
+- {key: rtx-a2000, pattern: '\ba\s*-?\s*2000'}
+- {key: rtx-4090, pattern: '4090'}
+- {key: rtx-2000-ada, pattern: 'rtx\s*2000\b', warn: "'RTX 2000' without 'Ada' is ambiguous"}
+- {key: rtx-1000-ada, pattern: 'rtx\s*1000\b', warn: "'RTX 1000' without 'Ada' is ambiguous"}
+- {key: integrated, pattern: 'iris|intel\s*arc|\barc\b|integrated|uhd graphics|intégr|integriert|\buma\b'}
