@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import logging
+import shutil
+import subprocess
 from pathlib import Path
 from typing import Annotated
 
@@ -46,6 +48,9 @@ def run(
     model: Annotated[str, typer.Option(help="Claude model for extraction")] = DEFAULT_MODEL,
     interval: Annotated[float, typer.Option(help="Seconds between requests to one host")] = 5.0,
     verbose: Annotated[bool, typer.Option("-v")] = False,
+    open_report: Annotated[
+        bool, typer.Option("--open/--no-open", help="Open latest.html with xdg-open when done")
+    ] = True,
 ) -> None:
     """Collect, score and rank listings; write HTML, Markdown and JSON reports."""
     logging.basicConfig(level=logging.INFO if verbose else logging.WARNING, format="%(levelname)s %(message)s")
@@ -68,6 +73,14 @@ def run(
         typer.echo(f"{i:2}. {s.landed.total_eur:>8} EUR  {s.discount:+.0%}  risk {s.risk:>3} {flag} {s.raw.title[:70]}")
     latest = ROOT / "reports" / target.slug / "latest"
     typer.echo(f"\nReport: {latest}.html (browser) or {latest}.md")
+    if open_report and (xdg_open := shutil.which("xdg-open")):
+        # Detached, so the browser outlives this process and its output stays out of the terminal.
+        subprocess.Popen(
+            [xdg_open, f"{latest}.html"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            start_new_session=True,
+        )
 
 
 @app.command()
