@@ -187,8 +187,8 @@ All amounts are in EUR, VAT included, delivered to the buyer's postcode.
 |---|---|
 | EU seller, any type | price + shipping to FR (+ platform buyer-protection fee if any) |
 | EU seller, pickup only | price. The distance to the nearest pickup zone is stored; the listing is dropped if it falls outside every zone |
-| UK / CH, eBay International Shipping | price + shipping + eBay's import charges if the API returns them, otherwise 20% × (price + shipping) |
-| UK / CH, direct shipping | FX(price ex-UK-VAT if the seller zero-rates exports, else price incl) + shipping + 20% FR import VAT + €20 carrier fee. Customs duty 0% (8471.30) |
+| Non-EU (UK, CH, US), eBay International Shipping | price + shipping + eBay's import charges if the API returns them, otherwise 20% × (price + shipping). eBay collects them at checkout, so there is no carrier fee. Observed quotes run at 20.4–20.5% |
+| Non-EU, direct shipping | goods = FX(price ex local VAT if the seller zero-rates exports, else price incl). duty = 0% × (goods + shipping) for 8471.30, from any origin. VAT = 20% × (goods + shipping + duty). Carrier clearance fee = max(share × (duty + VAT), minimum) + 20% VAT: DHL 1.8%/€16.67, UPS 3.05%/€18.45, FedEx 2.5%/€15, postal (Royal Mail, USPS via La Poste) €8 flat. Unknown carrier counts as UPS and is marked estimated |
 | Company buyer (`vat_basis: excl`) | Same rules on ex-VAT amounts. Margin-scheme sellers cannot deduct VAT, so this is shown in the report |
 
 Every result records how it was computed and marks estimated parts, for example

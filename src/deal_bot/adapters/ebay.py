@@ -89,6 +89,15 @@ def redact(text: str | None, seller: dict) -> str | None:
     return text
 
 
+def _carrier(option: dict) -> str | None:
+    """Which carrier clears the parcel in France, from eBay's carrier and service codes."""
+    code = f"{option.get('shippingCarrierCode', '')} {option.get('shippingServiceCode', '')}".upper()
+    for key, carrier in (("DHL", "dhl"), ("UPS", "ups"), ("FEDEX", "fedex"), ("USPS", "postal"), ("ROYAL", "postal")):
+        if key in code:
+            return carrier
+    return None
+
+
 def _cheapest(options: list[dict]) -> dict | None:
     priced = [o for o in options if o.get("shippingCost")]
     return min(priced, key=lambda o: Decimal(o["shippingCost"]["value"]), default=None)
@@ -151,7 +160,8 @@ def parse_item(summary: dict, detail: dict | None, buyer_country: str, viewer: s
         auction_ends_at=_dt(item.get("itemEndDate")),
         available=availability != _OUT_OF_STOCK,
         policy=SourcePolicy(
-            via_ebay_international_shipping=bool(option) and option.get("fulfilledThrough") == "GLOBAL_SHIPPING"
+            via_ebay_international_shipping=bool(option) and option.get("fulfilledThrough") == "GLOBAL_SHIPPING",
+            carrier=_carrier(option) if option else None,
         ),
     )
 

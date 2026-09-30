@@ -79,6 +79,7 @@ class SourcePolicy(BaseModel):
     export_zero_rated: str = "unknown"  # yes | no | unknown
     shipping_estimate_eur: Decimal | None = None
     via_ebay_international_shipping: bool = False
+    carrier: str | None = None  # dhl | ups | fedex | postal; None = unknown, for import clearance fees
 
 
 class RawListing(BaseModel):

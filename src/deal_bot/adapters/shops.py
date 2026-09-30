@@ -27,6 +27,7 @@ class ShopConfig:
     price_includes_local_vat: bool = True
     export_zero_rated: str = "unknown"
     shipping_estimate_eur: float | None = None
+    carrier: str | None = None  # dhl | ups | fedex | postal, when the shop names its carrier
 
     def policy(self) -> SourcePolicy:
         return SourcePolicy(
@@ -35,6 +36,7 @@ class ShopConfig:
             shipping_estimate_eur=None
             if self.shipping_estimate_eur is None
             else Decimal(str(self.shipping_estimate_eur)),
+            carrier=self.carrier,
         )
 
     def listing(self, **kw) -> RawListing:

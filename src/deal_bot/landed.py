@@ -14,12 +14,28 @@ EU = {
 FR_VAT = Decimal("0.20")
 # Local VAT that a non-EU seller's price may include and may refund on export.
 EXPORT_VAT = {"GB": Decimal("0.20"), "CH": Decimal("0.081")}
-CARRIER_IMPORT_FEE = Decimal(20)  # carrier's customs handling fee, typical for FR imports
-CUSTOMS_DUTY = Decimal(0)  # laptops, tariff line 8471.30
+# Laptops (8471.30) are duty-free from any origin under the WTO Information Technology Agreement.
+CUSTOMS_DUTY_RATE = Decimal(0)
+# What the carrier bills the recipient for advancing duty and VAT, as of 2026:
+# (share of duty + VAT, minimum), excluding the French VAT charged on the fee itself.
+# DHL: guide.dhl.fr 2026 rate guide. UPS and FedEx: published surcharge pages, not checked in full.
+# postal: La Poste's counter fee for Royal Mail / USPS parcels, EUR 8 including VAT.
+CARRIER_FEES = {
+    "dhl": (Decimal("0.018"), Decimal("16.67")),
+    "ups": (Decimal("0.0305"), Decimal("18.45")),
+    "fedex": (Decimal("0.025"), Decimal("15.00")),
+    "postal": (Decimal(0), Decimal(8) / (1 + FR_VAT)),
+}
+UNKNOWN_CARRIER = "ups"  # the dearest of the express carriers
 
 
 def _eur(x: Decimal) -> Decimal:
     return x.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+
+
+def clearance_fee(duty_and_vat: Decimal, carrier: str | None) -> Decimal:
+    share, minimum = CARRIER_FEES[carrier or UNKNOWN_CARRIER]
+    return max(share * duty_and_vat, minimum) * (1 + FR_VAT)
 
 
 def landed_cost(listing: RawListing, rates: Rates) -> LandedCost:
@@ -57,10 +73,16 @@ def landed_cost(listing: RawListing, rates: Rates) -> LandedCost:
             charges = rates.to_eur(listing.import_charges.amount, listing.import_charges.currency)
             parts.append(("import charges (quoted)", _eur(charges), False))
         else:
-            parts.append(("customs duty", CUSTOMS_DUTY, False))
-            parts.append(("FR import VAT", _eur((goods + shipping) * FR_VAT), True))
+            # VAT base: price + all shipping + duty. Customs converts at its own monthly rate, hence estimated.
+            duty = (goods + shipping) * CUSTOMS_DUTY_RATE
+            vat = (goods + shipping + duty) * FR_VAT
+            parts.append(("customs duty", _eur(duty), False))
+            parts.append(("FR import VAT", _eur(vat), True))
+            # eBay International Shipping collects import charges at checkout; nothing is due on delivery.
             if not policy.via_ebay_international_shipping:
-                parts.append(("carrier handling fee", CARRIER_IMPORT_FEE, True))
+                carrier = policy.carrier or UNKNOWN_CARRIER
+                label = f"{carrier} clearance fee" + ("" if policy.carrier else " (carrier unknown)")
+                parts.append((label, _eur(clearance_fee(duty + vat, policy.carrier)), policy.carrier is None))
 
     total = sum((amount for _, amount, _ in parts), Decimal(0))
     return LandedCost(total_eur=_eur(total), parts=parts, notes=notes)

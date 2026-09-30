@@ -4,7 +4,7 @@ from decimal import Decimal
 from conftest import TODAY, make_listing, make_spec
 
 from deal_bot.fairvalue import fair_value
-from deal_bot.landed import landed_cost
+from deal_bot.landed import clearance_fee, landed_cost
 from deal_bot.models import Condition, Delivery, Money, Screen, SourcePolicy
 
 
@@ -51,7 +51,7 @@ def test_landed_uk_retailer_vat_unknown_keeps_worst_case(rates):
     )
     lc = landed_cost(listing, rates)
     price_eur = rates.to_eur(Decimal(2015), "GBP")
-    expected = price_eur + 60 + (price_eur + 60) * Decimal("0.2") + 20
+    expected = price_eur + 60 + (price_eur + 60) * Decimal("0.2") + Decimal("22.14")  # UPS minimum, carrier unknown
     assert abs(lc.total_eur - expected) < Decimal("0.05")
     assert any("GB VAT may be refunded" in n for n in lc.notes)
 
@@ -65,7 +65,7 @@ def test_landed_uk_retailer_zero_rated_strips_uk_vat(rates):
     )
     lc = landed_cost(listing, rates)
     ex_vat = rates.to_eur(Decimal(2015), "GBP") / Decimal("1.2")
-    assert abs(lc.total_eur - (ex_vat * Decimal("1.2") + 20)) < Decimal("0.05")
+    assert abs(lc.total_eur - (ex_vat * Decimal("1.2") + Decimal("22.14"))) < Decimal("0.05")
 
 
 def test_fair_value_reference_config_is_base(kb, prices):
@@ -104,4 +104,27 @@ def test_landed_swiss_seller_zero_rated_strips_swiss_vat(rates):
     )
     lc = landed_cost(listing, rates)
     ex_vat = rates.to_eur(Decimal(1000), "CHF")
-    assert abs(lc.total_eur - (ex_vat * Decimal("1.2") + 20)) < Decimal("0.05")
+    assert abs(lc.total_eur - (ex_vat * Decimal("1.2") + Decimal("22.14"))) < Decimal("0.05")
+
+
+def test_clearance_fee_minimum_and_share():
+    assert clearance_fee(Decimal(300), "dhl") == Decimal("16.67") * Decimal("1.2")  # 1.8% of 300 < minimum
+    assert clearance_fee(Decimal(1000), "ups") == Decimal("30.5") * Decimal("1.2")  # 3.05% of 1000 > minimum
+    assert clearance_fee(Decimal(1000), "postal").quantize(Decimal("0.01")) == Decimal("8.00")
+    assert clearance_fee(Decimal(300), None) == clearance_fee(Decimal(300), "ups")
+
+
+def test_landed_us_seller_by_ups(rates):
+    listing = make_listing(
+        price="1680",
+        currency="USD",
+        country="US",
+        shipping=Money(amount=Decimal("185.93"), currency="USD"),
+        policy=SourcePolicy(carrier="ups"),
+    )
+    lc = landed_cost(listing, rates)
+    base = rates.to_eur(Decimal("1865.93"), "USD")
+    vat = base * Decimal("0.2")
+    assert abs(lc.total_eur - (base + vat + clearance_fee(vat, "ups"))) < Decimal("0.05")
+    fee = next(part for part in lc.parts if "clearance" in part[0])
+    assert fee[0] == "ups clearance fee" and not fee[2]  # carrier known, not estimated

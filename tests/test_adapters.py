@@ -5,7 +5,7 @@ import httpx
 from conftest import FIXTURES
 
 from deal_bot.adapters.base import Http
-from deal_bot.adapters.ebay import EbayAdapter, parse_item
+from deal_bot.adapters.ebay import EbayAdapter, _carrier, parse_item
 from deal_bot.adapters.refurbed import parse_product
 from deal_bot.adapters.shops import ShopConfig, ShopifyAdapter, WooCommerceAdapter
 from deal_bot.models import Delivery, Protection, SellerType
@@ -87,6 +87,12 @@ def test_ebay_uk_item_via_international_shipping():
     assert x.import_charges.currency == "GBP" and x.import_charges.amount > 0
     assert x.policy.via_ebay_international_shipping
     assert x.location.country == "GB"
+
+
+def test_ebay_carrier_codes():
+    assert _carrier({"shippingCarrierCode": "UPS", "shippingServiceCode": "UPS Worldwide Saver"}) == "ups"
+    assert _carrier({"shippingCarrierCode": "USPS", "shippingServiceCode": "USPS Priority Mail Intl"}) == "postal"
+    assert _carrier({"shippingCarrierCode": "PBI_UK", "shippingServiceCode": "International Priority Shipping"}) is None
 
 
 def test_ebay_item_not_shipping_to_france():
