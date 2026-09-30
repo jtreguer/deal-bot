@@ -5,13 +5,12 @@ Status: draft 1, 2026-09-29. Based on the manual survey in `survey/2026-09-29.md
 **Phase 1 progress (2026-09-29):**
 
 - **Done:**
-  - Shopify, WooCommerce and Refurbed adapters
+  - eBay (Browse API, 9 marketplaces), Shopify, WooCommerce and Refurbed adapters
   - FX, prefilter, extraction, validation, hard filters, landed cost, fair value, risk,
     duplicate grouping, ranking
   - HTML and JSON report
   - SQLite history
 - **Waiting:**
-  - eBay adapter (developer keys pending)
   - live extraction eval (needs the API key in `.env`)
 - **Deferred:** EuroPC and LapStore adapters (no stock at survey time)
 
@@ -149,7 +148,7 @@ Access tiers:
 
 | Source | Tier | Phase | Method / notes |
 |---|---|---|---|
-| eBay FR, DE, IT, ES, NL, BE, AT, IE, UK | A | 1 | Browse API `item_summary/search`, one call per marketplace (`X-EBAY-C-MARKETPLACE-ID`), laptop category, `X-EBAY-C-ENDUSERCTX: contextualLocation=country=FR,zip=75001` for shipping estimates. `getItem` returns aspects, the description and shipping options. Dedupe by legacy ID. Needs a free eBay developer account. |
+| eBay FR, DE, IT, ES, NL, BE, AT, IE, UK | A | 1 | Browse API `item_summary/search`, one call per marketplace (`X-EBAY-C-MARKETPLACE-ID`), laptop category, `X-EBAY-C-ENDUSERCTX: contextualLocation=country=FR,zip=75001` for shipping estimates. `getItem` returns aspects, the description and shipping options. Dedupe by legacy ID. Needs a free eBay developer account. The account opted out of marketplace account deletion notifications as "not persisting eBay data", so the adapter must set `seller.name` to None: no eBay username may reach SQLite or the reports. |
 | Shopify refurbishers (Cybist, Wisetek, others) | A | 1 | One generic adapter: `/products.json?limit=250`, keyword match, variant title parsed as the config, `available` flag. Adding a store only needs a config line. |
 | WooCommerce refurbishers (Silicon Connect, Dubbelgaaf, Estunt) | A | 1 | One generic adapter: `/wp-json/wc/store/v1/products?search=`. |
 | Refurbed (.fr .de .at .it .nl) | B | 1 | `/search/?query=`. The spec table includes the GPU. Stock and price differ by country, so query `.fr` first. |
@@ -368,8 +367,8 @@ The pydantic models live in `src/deal_bot/models.py`:
 
 ## 14. Open questions
 
-1. **eBay developer account.** Requested on 2026-09-29; approval expected in about one
-   business day.
+1. **eBay developer account.** Keys enabled on 2026-09-30 after opting out of account
+   deletion notifications (see the eBay row in the sources table).
 2. **Tier C sources.** Is running Playwright from your own machine at low frequency
    acceptable for Leboncoin and Back Market, given their terms of service? Or should they
    stay manual?

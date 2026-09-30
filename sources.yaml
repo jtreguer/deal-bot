@@ -1,4 +1,8 @@
-# Retail sources for phase 1. eBay is added once the developer keys arrive.
+# Phase 1 sources.
+ebay:
+  # Browse API; needs EBAY_CLIENT_ID and EBAY_CLIENT_SECRET in .env.
+  marketplaces: [EBAY_FR, EBAY_DE, EBAY_IT, EBAY_ES, EBAY_NL, EBAY_BE, EBAY_AT, EBAY_IE, EBAY_GB]
+  category_ids: "177"   # PC laptops & netbooks, the same ID on every marketplace
 shopify:
   - name: cybist
     base_url: https://cybist.com

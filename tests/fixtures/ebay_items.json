@@ -1,0 +1,1642 @@
+{
+ "147226012324": {
+  "itemId": "v1|147226012324|0",
+  "sellerItemRevision": "7",
+  "title": "Dell Precision 5680 16'' i7-13800H 4,75GHz 16GB 512GB RTX A1000",
+  "shortDescription": "🎮 Grafik: NVIDIA® RTX™ A1000. Die Precision-Serie von Dell steht für höchste Zuverlässigkeit und Leistung. Dell Precision 5680 – professionell aufbereitet. 💻 Modell: Dell Precision 5680 (16″). ✔️ Dell Precision 5680.",
+  "price": {
+   "value": "749.00",
+   "currency": "EUR"
+  },
+  "categoryPath": "Computer, Tablets & Netzwerk|Notebooks & Netbooks|PC Notebooks & Netbooks",
+  "categoryIdPath": "58058|175672|177",
+  "condition": "Gut - Refurbished",
+  "conditionId": "2030",
+  "itemLocation": {
+   "city": "Recklinghausen",
+   "postalCode": "45***",
+   "country": "DE"
+  },
+  "image": {
+   "imageUrl": "https://i.ebayimg.com/images/g/4lUAAeSwADBqu4lI/s-l1600.jpg",
+   "width": 500,
+   "height": 500
+  },
+  "additionalImages": [
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/-D4AAeSwevlqu4lI/s-l1600.jpg",
+    "width": 500,
+    "height": 500
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/DsoAAeSwYa5qu4lI/s-l1600.jpg",
+    "width": 500,
+    "height": 500
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/2fYAAeSw8VZqu4lI/s-l1600.jpg",
+    "width": 1435,
+    "height": 1435
+   }
+  ],
+  "brand": "Dell",
+  "itemCreationDate": "2026-03-27T06:24:29.000Z",
+  "seller": {
+   "username": "fake-seller-324",
+   "feedbackPercentage": "99.9",
+   "feedbackScore": 23517,
+   "sellerAccountType": "BUSINESS",
+   "sellerLegalInfo": {
+    "name": "Beispiel Handels GmbH",
+    "legalContactFirstName": "Erika",
+    "legalContactLastName": "Mustermann",
+    "email": "shop@example.test",
+    "phone": "+49 30 1234567",
+    "sellerProvidedLegalAddress": {
+     "addressLine1": "Musterstrasse 1",
+     "city": "Berlin",
+     "postalCode": "10115",
+     "country": "DE"
+    },
+    "vatDetails": [
+     {
+      "issuingCountry": "DE",
+      "vatId": "DE999999999"
+     }
+    ]
+   }
+  },
+  "gtin": "Nicht zutreffend",
+  "estimatedAvailabilities": [
+   {
+    "deliveryOptions": [
+     "SHIP_TO_HOME"
+    ],
+    "estimatedAvailabilityStatus": "IN_STOCK",
+    "estimatedAvailableQuantity": 3,
+    "estimatedSoldQuantity": 1,
+    "estimatedRemainingQuantity": 3
+   }
+  ],
+  "shippingOptions": [
+   {
+    "shippingServiceCode": "Standard International",
+    "type": "Standardversand",
+    "shippingCost": {
+     "value": "15.90",
+     "currency": "EUR"
+    },
+    "quantityUsedForEstimate": 1,
+    "minEstimatedDeliveryDate": "2026-10-05T10:00:00.000Z",
+    "maxEstimatedDeliveryDate": "2026-10-08T10:00:00.000Z",
+    "shipToLocationUsedForEstimate": {
+     "postalCode": "75001",
+     "country": "FR"
+    },
+    "additionalShippingCostPerUnit": {
+     "value": "1.00",
+     "currency": "EUR"
+    },
+    "shippingCostType": "FIXED"
+   }
+  ],
+  "shipToLocations": {
+   "regionIncluded": [
+    {
+     "regionName": "Europa",
+     "regionType": "WORLD_REGION",
+     "regionId": "EUROPE"
+    }
+   ],
+   "regionExcluded": [
+    {
+     "regionName": "Nordfriesische Inseln",
+     "regionType": "COUNTRY_REGION",
+     "regionId": "_NI"
+    },
+    {
+     "regionName": "Ostfriesische Inseln",
+     "regionType": "COUNTRY_REGION",
+     "regionId": "_OI"
+    },
+    {
+     "regionName": "Ostseeinseln",
+     "regionType": "COUNTRY_REGION",
+     "regionId": "_OL"
+    },
+    {
+     "regionName": "Montenegro",
+     "regionType": "COUNTRY",
+     "regionId": "ME"
+    },
+    {
+     "regionName": "Portugal",
+     "regionType": "COUNTRY",
+     "regionId": "PT"
+    },
+    {
+     "regionName": "Ukraine",
+     "regionType": "COUNTRY",
+     "regionId": "UA"
+    },
+    {
+     "regionName": "Südostasien",
+     "regionType": "WORLD_REGION",
+     "regionId": "SOUTHEAST_ASIA"
+    },
+    {
+     "regionName": "Estland",
+     "regionType": "COUNTRY",
+     "regionId": "EE"
+    },
+    {
+     "regionName": "Litauen",
+     "regionType": "COUNTRY",
+     "regionId": "LT"
+    },
+    {
+     "regionName": "Mittelamerika und Karibik",
+     "regionType": "WORLD_REGION",
+     "regionId": "CENTRAL_AMERICA_AND_CARIBBEAN"
+    },
+    {
+     "regionName": "Malta",
+     "regionType": "COUNTRY",
+     "regionId": "MT"
+    },
+    {
+     "regionName": "Vatikan",
+     "regionType": "COUNTRY",
+     "regionId": "VA"
+    },
+    {
+     "regionName": "Russische Föderation",
+     "regionType": "COUNTRY",
+     "regionId": "RU"
+    },
+    {
+     "regionName": "Moldawien",
+     "regionType": "COUNTRY",
+     "regionId": "MD"
+    },
+    {
+     "regionName": "Finnland",
+     "regionType": "COUNTRY",
+     "regionId": "FI"
+    },
+    {
+     "regionName": "Österreich",
+     "regionType": "COUNTRY",
+     "regionId": "AT"
+    },
+    {
+     "regionName": "Belarus",
+     "regionType": "COUNTRY",
+     "regionId": "BY"
+    },
+    {
+     "regionName": "Schweiz",
+     "regionType": "COUNTRY",
+     "regionId": "CH"
+    },
+    {
+     "regionName": "Svalbard und Jan Mayen",
+     "regionType": "COUNTRY",
+     "regionId": "SJ"
+    },
+    {
+     "regionName": "Gibraltar",
+     "regionType": "COUNTRY",
+     "regionId": "GI"
+    },
+    {
+     "regionName": "Naher Osten",
+     "regionType": "WORLD_REGION",
+     "regionId": "MIDDLE_EAST"
+    },
+    {
+     "regionName": "Serbien",
+     "regionType": "COUNTRY",
+     "regionId": "RS"
+    },
+    {
+     "regionName": "Andorra",
+     "regionType": "COUNTRY",
+     "regionId": "AD"
+    },
+    {
+     "regionName": "Südamerika",
+     "regionType": "WORLD_REGION",
+     "regionId": "SOUTH_AMERICA"
+    },
+    {
+     "regionName": "Jersey",
+     "regionType": "COUNTRY",
+     "regionId": "JE"
+    },
+    {
+     "regionName": "Tschechische Republik",
+     "regionType": "COUNTRY",
+     "regionId": "CZ"
+    },
+    {
+     "regionName": "Griechenland",
+     "regionType": "COUNTRY",
+     "regionId": "GR"
+    },
+    {
+     "regionName": "Afrika",
+     "regionType": "WORLD_REGION",
+     "regionId": "AFRICA"
+    },
+    {
+     "regionName": "Irland",
+     "regionType": "COUNTRY",
+     "regionId": "IE"
+    },
+    {
+     "regionName": "Zypern",
+     "regionType": "COUNTRY",
+     "regionId": "CY"
+    },
+    {
+     "regionName": "Mazedonien",
+     "regionType": "COUNTRY",
+     "regionId": "MK"
+    },
+    {
+     "regionName": "Slowakei",
+     "regionType": "COUNTRY",
+     "regionId": "SK"
+    },
+    {
+     "regionName": "Bosnien und Herzegowina",
+     "regionType": "COUNTRY",
+     "regionId": "BA"
+    },
+    {
+     "regionName": "Nordamerika",
+     "regionType": "WORLD_REGION",
+     "regionId": "NORTH_AMERICA"
+    },
+    {
+     "regionName": "Lettland",
+     "regionType": "COUNTRY",
+     "regionId": "LV"
+    },
+    {
+     "regionName": "Guernsey",
+     "regionType": "COUNTRY",
+     "regionId": "GG"
+    },
+    {
+     "regionName": "Liechtenstein",
+     "regionType": "COUNTRY",
+     "regionId": "LI"
+    },
+    {
+     "regionName": "Bulgarien",
+     "regionType": "COUNTRY",
+     "regionId": "BG"
+    },
+    {
+     "regionName": "Rumänien",
+     "regionType": "COUNTRY",
+     "regionId": "RO"
+    },
+    {
+     "regionName": "Großbritannien",
+     "regionType": "COUNTRY",
+     "regionId": "GB"
+    },
+    {
+     "regionName": "Ozeanien",
+     "regionType": "WORLD_REGION",
+     "regionId": "OCEANIA"
+    },
+    {
+     "regionName": "Island",
+     "regionType": "COUNTRY",
+     "regionId": "IS"
+    },
+    {
+     "regionName": "Albanien",
+     "regionType": "COUNTRY",
+     "regionId": "AL"
+    },
+    {
+     "regionName": "San Marino",
+     "regionType": "COUNTRY",
+     "regionId": "SM"
+    },
+    {
+     "regionName": "Luxemburg",
+     "regionType": "COUNTRY",
+     "regionId": "LU"
+    },
+    {
+     "regionName": "Norwegen",
+     "regionType": "COUNTRY",
+     "regionId": "NO"
+    },
+    {
+     "regionName": "Monaco",
+     "regionType": "COUNTRY",
+     "regionId": "MC"
+    },
+    {
+     "regionName": "Asien",
+     "regionType": "WORLD_REGION",
+     "regionId": "ASIA"
+    },
+    {
+     "regionName": "Ungarn",
+     "regionType": "COUNTRY",
+     "regionId": "HU"
+    },
+    {
+     "regionName": "Postfach",
+     "regionType": "COUNTRY_REGION",
+     "regionId": "PO_BOX"
+    }
+   ]
+  },
+  "returnTerms": {
+   "returnsAccepted": false
+  },
+  "taxes": [
+   {
+    "taxType": "VAT",
+    "taxPercentage": "19.0",
+    "includedInPrice": true,
+    "ebayCollectAndRemitTax": false
+   }
+  ],
+  "localizedAspects": [
+   {
+    "type": "STRING",
+    "name": "Besonderheiten",
+    "value": "Bluetooth, Eingebautes Mikrofon, Integrierte Webkamera, Wi-Fi, Flachbildschirm, Ethernet Anschluss"
+   },
+   {
+    "type": "STRING",
+    "name": "Konnektivität",
+    "value": "HDMI, USB-C, Gigabit Ethernet, Bluetooth, WiFi"
+   },
+   {
+    "type": "STRING",
+    "name": "Zustand",
+    "value": "Gut - Refurbished"
+   },
+   {
+    "type": "STRING",
+    "name": "Passend für",
+    "value": "Arbeitsstation, Gelegentliche Computerarbeiten, Grafikdesign"
+   },
+   {
+    "type": "STRING",
+    "name": "Marke",
+    "value": "Dell"
+   },
+   {
+    "type": "STRING",
+    "name": "Bildschirmgröße",
+    "value": "16 Zoll"
+   },
+   {
+    "type": "STRING",
+    "name": "Prozessor",
+    "value": "Intel Core i7 13.Gen"
+   },
+   {
+    "type": "STRING",
+    "name": "Modell",
+    "value": "Dell Precision 5860"
+   },
+   {
+    "type": "STRING",
+    "name": "Betriebssystem",
+    "value": "Windows 11 Pro"
+   },
+   {
+    "type": "STRING",
+    "name": "Festplattentyp",
+    "value": "SSD (Solid State Drive)"
+   },
+   {
+    "type": "STRING",
+    "name": "Produktart",
+    "value": "Notebook / Laptop"
+   },
+   {
+    "type": "STRING",
+    "name": "Grafikprozessor",
+    "value": "NVidia Quadro RTX A1000"
+   },
+   {
+    "type": "STRING",
+    "name": "SSD-Festplattenkapazität",
+    "value": "512 GB"
+   },
+   {
+    "type": "STRING",
+    "name": "Maximale Auflösung",
+    "value": "1920 x 1080"
+   },
+   {
+    "type": "STRING",
+    "name": "Arbeitsspeichergröße",
+    "value": "16 GB"
+   },
+   {
+    "type": "STRING",
+    "name": "Grafikprozessortyp",
+    "value": "Dedizierte Grafiken"
+   },
+   {
+    "type": "STRING",
+    "name": "Inklusive Ladegerät",
+    "value": "Ja"
+   }
+  ],
+  "topRatedBuyingExperience": false,
+  "buyingOptions": [
+   "FIXED_PRICE"
+  ],
+  "itemWebUrl": "https://www.ebay.de/itm/147226012324",
+  "description": "<a href=\"https://www.ebay.de/str/fake-seller-324\">Shop</a> <img alt=\"Beispiel Handels GmbH\"><p>Dell Precision 5680, i7-13800H, RTX A1000.</p><p>Kontakt: Erika Mustermann, shop@example.test, +49 30 1234567</p>",
+  "paymentMethods": [
+   {
+    "paymentMethodType": "OTHER"
+   },
+   {
+    "paymentMethodType": "WALLET",
+    "paymentMethodBrands": [
+     {
+      "paymentMethodBrandType": "PAYPAL"
+     },
+     {
+      "paymentMethodBrandType": "APPLE_PAY"
+     }
+    ]
+   },
+   {
+    "paymentMethodType": "CREDIT_CARD",
+    "paymentMethodBrands": [
+     {
+      "paymentMethodBrandType": "VISA"
+     },
+     {
+      "paymentMethodBrandType": "MASTERCARD"
+     },
+     {
+      "paymentMethodBrandType": "DINERS_CLUB"
+     }
+    ]
+   }
+  ],
+  "immediatePay": false,
+  "enabledForGuestCheckout": true,
+  "eligibleForInlineCheckout": true,
+  "lotSize": 0,
+  "legacyItemId": "147226012324",
+  "priorityListing": true,
+  "adultOnly": false,
+  "categoryId": "177",
+  "listingMarketplaceId": "EBAY_DE"
+ },
+ "198489740505": {
+  "itemId": "v1|198489740505|0",
+  "title": "Dell Precision 5680,16\",i7-13700H,32GB,512GB SSD,8GB RTX2000 ada,Touch,UHD+,3Yrs",
+  "shortDescription": "NVidia RTX 2000 Ada Gen - 8GB Workstation Graphics Card - GDDR6, 128Bit, 3072 Cuda Cores. Dell Precision M5680 Workstation (12dg8d). Dell Factory Re-manufactured / Dell Factory Re-Furbished. Dell - 3 Years PRO SUPPORT Onsite Warranty (On-Site Service After Remote Diagnosis, Includes Dell International Service & Support).",
+  "price": {
+   "value": "2962.09",
+   "currency": "EUR",
+   "convertedFromValue": "2539.00",
+   "convertedFromCurrency": "GBP"
+  },
+  "categoryPath": "Computers/Tablets & Networking|Laptops & Netbooks|PC Laptops & Netbooks",
+  "categoryIdPath": "58058|175672|177",
+  "condition": "Neu: Sonstige (siehe Artikelbeschreibung)",
+  "conditionId": "1500",
+  "conditionDescription": "DELL Factory Re-Furbished / Re-manufactured : Dell take all of their returned or cancelled stock then rigorously re-test and refurbish it, allowing us to offer it to you at greatly reduced prices. Comes with a DELL - 3 YEARS PRO SUPPORT NEXT BUSINESS DAY ON-SITE WARRANTY SERVICE for total peace of mind. In original Dell containers and packaging for safe transit. We only purchase direct from Dell and no other outlets.",
+  "itemLocation": {
+   "city": "Ramsey",
+   "postalCode": "IM8 ***",
+   "country": "GB"
+  },
+  "image": {
+   "imageUrl": "https://i.ebayimg.com/images/g/g5sAAeSwzLpqIuoi/s-l1600.jpg",
+   "width": 1600,
+   "height": 1009
+  },
+  "additionalImages": [
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/wHwAAeSwHClqIuoi/s-l1600.jpg",
+    "width": 1600,
+    "height": 918
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/IwAAAeSwgglqIuoi/s-l1600.jpg",
+    "width": 1600,
+    "height": 1270
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/jkAAAeSwLApqIuoi/s-l1600.jpg",
+    "width": 1600,
+    "height": 1000
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/KVMAAeSwY0pqIuoi/s-l1600.jpg",
+    "width": 1600,
+    "height": 1000
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/t78AAeSwhMhqIuoh/s-l1600.jpg",
+    "width": 1600,
+    "height": 1090
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/p~4AAeSwL-BqIuoi/s-l1600.jpg",
+    "width": 1600,
+    "height": 1090
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/r5IAAeSw4sRqIuoi/s-l1600.jpg",
+    "width": 1600,
+    "height": 1450
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/qiIAAeSwK6xqIuoi/s-l1600.jpg",
+    "width": 1600,
+    "height": 1451
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/hIoAAeSwPZdqIuoi/s-l1600.jpg",
+    "width": 1600,
+    "height": 1047
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/q~0AAeSwWTNqIuoi/s-l1600.jpg",
+    "width": 1239,
+    "height": 962
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/wLkAAeSwK4JqIuoi/s-l1600.jpg",
+    "width": 1074,
+    "height": 930
+   }
+  ],
+  "color": "Titan Grey",
+  "brand": "Dell",
+  "itemCreationDate": "2026-07-10T13:30:36.000Z",
+  "seller": {
+   "username": "fake-seller-505",
+   "feedbackPercentage": "100.0",
+   "feedbackScore": 986,
+   "sellerAccountType": "BUSINESS"
+  },
+  "gtin": "Does not apply",
+  "mpn": "n/a, PRECISION 5680",
+  "estimatedAvailabilities": [
+   {
+    "deliveryOptions": [],
+    "estimatedAvailabilityStatus": "IN_STOCK",
+    "estimatedAvailableQuantity": 1,
+    "estimatedSoldQuantity": 0,
+    "estimatedRemainingQuantity": 1
+   }
+  ],
+  "shippingOptions": [
+   {
+    "shippingServiceCode": "International Priority Shipping",
+    "shippingCarrierCode": "PBI_UK",
+    "type": "Expressversand",
+    "shippingCost": {
+     "value": "147.85",
+     "currency": "EUR",
+     "convertedFromValue": "126.73",
+     "convertedFromCurrency": "GBP"
+    },
+    "importCharges": {
+     "value": "636.94",
+     "currency": "EUR",
+     "convertedFromValue": "545.96",
+     "convertedFromCurrency": "GBP"
+    },
+    "fulfilledThrough": "GLOBAL_SHIPPING",
+    "quantityUsedForEstimate": 1,
+    "minEstimatedDeliveryDate": "2026-10-09T10:39:17.000Z",
+    "maxEstimatedDeliveryDate": "2026-10-14T10:39:17.000Z",
+    "shipToLocationUsedForEstimate": {
+     "postalCode": "75001",
+     "country": "FR"
+    },
+    "shippingCostType": "FIXED"
+   }
+  ],
+  "shipToLocations": {
+   "regionIncluded": [
+    {
+     "regionName": "Großbritannien",
+     "regionType": "COUNTRY",
+     "regionId": "GB"
+    },
+    {
+     "regionName": "Österreich",
+     "regionType": "COUNTRY",
+     "regionId": "AT"
+    },
+    {
+     "regionName": "Belgien",
+     "regionType": "COUNTRY",
+     "regionId": "BE"
+    },
+    {
+     "regionName": "Bulgarien",
+     "regionType": "COUNTRY",
+     "regionId": "BG"
+    },
+    {
+     "regionName": "Republik Kroatien",
+     "regionType": "COUNTRY",
+     "regionId": "HR"
+    },
+    {
+     "regionName": "Zypern",
+     "regionType": "COUNTRY",
+     "regionId": "CY"
+    },
+    {
+     "regionName": "Tschechische Republik",
+     "regionType": "COUNTRY",
+     "regionId": "CZ"
+    },
+    {
+     "regionName": "Dänemark",
+     "regionType": "COUNTRY",
+     "regionId": "DK"
+    },
+    {
+     "regionName": "Estland",
+     "regionType": "COUNTRY",
+     "regionId": "EE"
+    },
+    {
+     "regionName": "Finnland",
+     "regionType": "COUNTRY",
+     "regionId": "FI"
+    },
+    {
+     "regionName": "Frankreich",
+     "regionType": "COUNTRY",
+     "regionId": "FR"
+    },
+    {
+     "regionName": "Deutschland",
+     "regionType": "COUNTRY",
+     "regionId": "DE"
+    },
+    {
+     "regionName": "Griechenland",
+     "regionType": "COUNTRY",
+     "regionId": "GR"
+    },
+    {
+     "regionName": "Ungarn",
+     "regionType": "COUNTRY",
+     "regionId": "HU"
+    },
+    {
+     "regionName": "Irland",
+     "regionType": "COUNTRY",
+     "regionId": "IE"
+    },
+    {
+     "regionName": "Italien",
+     "regionType": "COUNTRY",
+     "regionId": "IT"
+    },
+    {
+     "regionName": "Lettland",
+     "regionType": "COUNTRY",
+     "regionId": "LV"
+    },
+    {
+     "regionName": "Litauen",
+     "regionType": "COUNTRY",
+     "regionId": "LT"
+    },
+    {
+     "regionName": "Luxemburg",
+     "regionType": "COUNTRY",
+     "regionId": "LU"
+    },
+    {
+     "regionName": "Malta",
+     "regionType": "COUNTRY",
+     "regionId": "MT"
+    },
+    {
+     "regionName": "Niederlande",
+     "regionType": "COUNTRY",
+     "regionId": "NL"
+    },
+    {
+     "regionName": "Polen",
+     "regionType": "COUNTRY",
+     "regionId": "PL"
+    },
+    {
+     "regionName": "Portugal",
+     "regionType": "COUNTRY",
+     "regionId": "PT"
+    },
+    {
+     "regionName": "Rumänien",
+     "regionType": "COUNTRY",
+     "regionId": "RO"
+    },
+    {
+     "regionName": "Slowakei",
+     "regionType": "COUNTRY",
+     "regionId": "SK"
+    },
+    {
+     "regionName": "Slowenien",
+     "regionType": "COUNTRY",
+     "regionId": "SI"
+    },
+    {
+     "regionName": "Spanien",
+     "regionType": "COUNTRY",
+     "regionId": "ES"
+    },
+    {
+     "regionName": "Schweden",
+     "regionType": "COUNTRY",
+     "regionId": "SE"
+    },
+    {
+     "regionName": "Australien",
+     "regionType": "COUNTRY",
+     "regionId": "AU"
+    },
+    {
+     "regionName": "USA",
+     "regionType": "COUNTRY",
+     "regionId": "US"
+    },
+    {
+     "regionName": "Bahrain",
+     "regionType": "COUNTRY",
+     "regionId": "BH"
+    },
+    {
+     "regionName": "Kanada",
+     "regionType": "COUNTRY",
+     "regionId": "CA"
+    },
+    {
+     "regionName": "Japan",
+     "regionType": "COUNTRY",
+     "regionId": "JP"
+    },
+    {
+     "regionName": "Neuseeland",
+     "regionType": "COUNTRY",
+     "regionId": "NZ"
+    },
+    {
+     "regionName": "China",
+     "regionType": "COUNTRY",
+     "regionId": "CN"
+    },
+    {
+     "regionName": "Israel",
+     "regionType": "COUNTRY",
+     "regionId": "IL"
+    },
+    {
+     "regionName": "Norwegen",
+     "regionType": "COUNTRY",
+     "regionId": "NO"
+    },
+    {
+     "regionName": "Malaysia",
+     "regionType": "COUNTRY",
+     "regionId": "MY"
+    },
+    {
+     "regionName": "Singapur",
+     "regionType": "COUNTRY",
+     "regionId": "SG"
+    },
+    {
+     "regionName": "Südkorea",
+     "regionType": "COUNTRY",
+     "regionId": "KR"
+    },
+    {
+     "regionName": "Schweiz",
+     "regionType": "COUNTRY",
+     "regionId": "CH"
+    },
+    {
+     "regionName": "Taiwan",
+     "regionType": "COUNTRY",
+     "regionId": "TW"
+    },
+    {
+     "regionName": "Brunei Darussalam",
+     "regionType": "COUNTRY",
+     "regionId": "BN"
+    },
+    {
+     "regionName": "Guernsey",
+     "regionType": "COUNTRY",
+     "regionId": "GG"
+    },
+    {
+     "regionName": "Gibraltar",
+     "regionType": "COUNTRY",
+     "regionId": "GI"
+    },
+    {
+     "regionName": "Island",
+     "regionType": "COUNTRY",
+     "regionId": "IS"
+    },
+    {
+     "regionName": "Jersey",
+     "regionType": "COUNTRY",
+     "regionId": "JE"
+    },
+    {
+     "regionName": "Jordanien",
+     "regionType": "COUNTRY",
+     "regionId": "JO"
+    },
+    {
+     "regionName": "Monaco",
+     "regionType": "COUNTRY",
+     "regionId": "MC"
+    },
+    {
+     "regionName": "Oman",
+     "regionType": "COUNTRY",
+     "regionId": "OM"
+    },
+    {
+     "regionName": "Saudi-Arabien",
+     "regionType": "COUNTRY",
+     "regionId": "SA"
+    },
+    {
+     "regionName": "Vereinigte Arabische Emirate",
+     "regionType": "COUNTRY",
+     "regionId": "AE"
+    },
+    {
+     "regionName": "Kuwait",
+     "regionType": "COUNTRY",
+     "regionId": "KW"
+    },
+    {
+     "regionName": "Katar",
+     "regionType": "COUNTRY",
+     "regionId": "QA"
+    }
+   ],
+   "regionExcluded": [
+    {
+     "regionName": "Kambodscha",
+     "regionType": "COUNTRY",
+     "regionId": "KH"
+    },
+    {
+     "regionName": "Indonesien",
+     "regionType": "COUNTRY",
+     "regionId": "ID"
+    },
+    {
+     "regionName": "Vietnam",
+     "regionType": "COUNTRY",
+     "regionId": "VN"
+    },
+    {
+     "regionName": "Hongkong",
+     "regionType": "COUNTRY",
+     "regionId": "HK"
+    },
+    {
+     "regionName": "Philippinen",
+     "regionType": "COUNTRY",
+     "regionId": "PH"
+    },
+    {
+     "regionName": "Laos",
+     "regionType": "COUNTRY",
+     "regionId": "LA"
+    },
+    {
+     "regionName": "Thailand",
+     "regionType": "COUNTRY",
+     "regionId": "TH"
+    },
+    {
+     "regionName": "Macau",
+     "regionType": "COUNTRY",
+     "regionId": "MO"
+    },
+    {
+     "regionName": "Afghanistan",
+     "regionType": "COUNTRY",
+     "regionId": "AF"
+    },
+    {
+     "regionName": "Kasachstan",
+     "regionType": "COUNTRY",
+     "regionId": "KZ"
+    },
+    {
+     "regionName": "Mongolei",
+     "regionType": "COUNTRY",
+     "regionId": "MN"
+    },
+    {
+     "regionName": "Nepal",
+     "regionType": "COUNTRY",
+     "regionId": "NP"
+    },
+    {
+     "regionName": "Tadschikistan",
+     "regionType": "COUNTRY",
+     "regionId": "TJ"
+    },
+    {
+     "regionName": "Bangladesch",
+     "regionType": "COUNTRY",
+     "regionId": "BD"
+    },
+    {
+     "regionName": "Malediven",
+     "regionType": "COUNTRY",
+     "regionId": "MV"
+    },
+    {
+     "regionName": "Sri Lanka",
+     "regionType": "COUNTRY",
+     "regionId": "LK"
+    },
+    {
+     "regionName": "Aserbaidschan",
+     "regionType": "COUNTRY",
+     "regionId": "AZ"
+    },
+    {
+     "regionName": "Georgien",
+     "regionType": "COUNTRY",
+     "regionId": "GE"
+    },
+    {
+     "regionName": "Russische Föderation",
+     "regionType": "COUNTRY",
+     "regionId": "RU"
+    },
+    {
+     "regionName": "Turkmenistan",
+     "regionType": "COUNTRY",
+     "regionId": "TM"
+    },
+    {
+     "regionName": "Pakistan",
+     "regionType": "COUNTRY",
+     "regionId": "PK"
+    },
+    {
+     "regionName": "Armenien",
+     "regionType": "COUNTRY",
+     "regionId": "AM"
+    },
+    {
+     "regionName": "Usbekistan",
+     "regionType": "COUNTRY",
+     "regionId": "UZ"
+    },
+    {
+     "regionName": "Bhutan",
+     "regionType": "COUNTRY",
+     "regionId": "BT"
+    },
+    {
+     "regionName": "Indien",
+     "regionType": "COUNTRY",
+     "regionId": "IN"
+    },
+    {
+     "regionName": "Kirgisistan",
+     "regionType": "COUNTRY",
+     "regionId": "KG"
+    },
+    {
+     "regionName": "Mikronesien",
+     "regionType": "COUNTRY",
+     "regionId": "FM"
+    },
+    {
+     "regionName": "Fidschi",
+     "regionType": "COUNTRY",
+     "regionId": "FJ"
+    },
+    {
+     "regionName": "Papua-Neuguinea",
+     "regionType": "COUNTRY",
+     "regionId": "PG"
+    },
+    {
+     "regionName": "Salomonen",
+     "regionType": "COUNTRY",
+     "regionId": "SB"
+    },
+    {
+     "regionName": "Marshallinseln",
+     "regionType": "COUNTRY",
+     "regionId": "MH"
+    },
+    {
+     "regionName": "Nauru",
+     "regionType": "COUNTRY",
+     "regionId": "NR"
+    },
+    {
+     "regionName": "Wallis und Futuna",
+     "regionType": "COUNTRY",
+     "regionId": "WF"
+    },
+    {
+     "regionName": "Samoa (Westsamoa)",
+     "regionType": "COUNTRY",
+     "regionId": "WS"
+    },
+    {
+     "regionName": "Tonga",
+     "regionType": "COUNTRY",
+     "regionId": "TO"
+    },
+    {
+     "regionName": "Tuvalu",
+     "regionType": "COUNTRY",
+     "regionId": "TV"
+    },
+    {
+     "regionName": "Vanuatu",
+     "regionType": "COUNTRY",
+     "regionId": "VU"
+    },
+    {
+     "regionName": "Kiribati",
+     "regionType": "COUNTRY",
+     "regionId": "KI"
+    },
+    {
+     "regionName": "Neukaledonien",
+     "regionType": "COUNTRY",
+     "regionId": "NC"
+    },
+    {
+     "regionName": "Palau",
+     "regionType": "COUNTRY",
+     "regionId": "PW"
+    },
+    {
+     "regionName": "Amerikanisch-Samoa",
+     "regionType": "COUNTRY",
+     "regionId": "AS"
+    },
+    {
+     "regionName": "Niue",
+     "regionType": "COUNTRY",
+     "regionId": "NU"
+    },
+    {
+     "regionName": "Französisch-Polynesien",
+     "regionType": "COUNTRY",
+     "regionId": "PF"
+    },
+    {
+     "regionName": "Cookinseln",
+     "regionType": "COUNTRY",
+     "regionId": "CK"
+    },
+    {
+     "regionName": "Guam",
+     "regionType": "COUNTRY",
+     "regionId": "GU"
+    },
+    {
+     "regionName": "Grönland",
+     "regionType": "COUNTRY",
+     "regionId": "GL"
+    },
+    {
+     "regionName": "Mexiko",
+     "regionType": "COUNTRY",
+     "regionId": "MX"
+    },
+    {
+     "regionName": "Saint-Pierre und Miquelon",
+     "regionType": "COUNTRY",
+     "regionId": "PM"
+    },
+    {
+     "regionName": "Bermuda",
+     "regionType": "COUNTRY",
+     "regionId": "BM"
+    },
+    {
+     "regionName": "Afrika",
+     "regionType": "WORLD_REGION",
+     "regionId": "AFRICA"
+    },
+    {
+     "regionName": "Türkei",
+     "regionType": "COUNTRY",
+     "regionId": "TR"
+    },
+    {
+     "regionName": "Jemen",
+     "regionType": "COUNTRY",
+     "regionId": "YE"
+    },
+    {
+     "regionName": "Irak",
+     "regionType": "COUNTRY",
+     "regionId": "IQ"
+    },
+    {
+     "regionName": "Libanon",
+     "regionType": "COUNTRY",
+     "regionId": "LB"
+    },
+    {
+     "regionName": "Südamerika",
+     "regionType": "WORLD_REGION",
+     "regionId": "SOUTH_AMERICA"
+    },
+    {
+     "regionName": "Mittelamerika und Karibik",
+     "regionType": "WORLD_REGION",
+     "regionId": "CENTRAL_AMERICA_AND_CARIBBEAN"
+    },
+    {
+     "regionName": "Vatikan",
+     "regionType": "COUNTRY",
+     "regionId": "VA"
+    },
+    {
+     "regionName": "Moldawien",
+     "regionType": "COUNTRY",
+     "regionId": "MD"
+    },
+    {
+     "regionName": "Andorra",
+     "regionType": "COUNTRY",
+     "regionId": "AD"
+    },
+    {
+     "regionName": "San Marino",
+     "regionType": "COUNTRY",
+     "regionId": "SM"
+    },
+    {
+     "regionName": "Serbien",
+     "regionType": "COUNTRY",
+     "regionId": "RS"
+    },
+    {
+     "regionName": "Montenegro",
+     "regionType": "COUNTRY",
+     "regionId": "ME"
+    },
+    {
+     "regionName": "Belarus",
+     "regionType": "COUNTRY",
+     "regionId": "BY"
+    },
+    {
+     "regionName": "Svalbard und Jan Mayen",
+     "regionType": "COUNTRY",
+     "regionId": "SJ"
+    },
+    {
+     "regionName": "Bosnien und Herzegowina",
+     "regionType": "COUNTRY",
+     "regionId": "BA"
+    },
+    {
+     "regionName": "Mazedonien",
+     "regionType": "COUNTRY",
+     "regionId": "MK"
+    },
+    {
+     "regionName": "Liechtenstein",
+     "regionType": "COUNTRY",
+     "regionId": "LI"
+    },
+    {
+     "regionName": "Albanien",
+     "regionType": "COUNTRY",
+     "regionId": "AL"
+    },
+    {
+     "regionName": "Ukraine",
+     "regionType": "COUNTRY",
+     "regionId": "UA"
+    },
+    {
+     "regionName": "Libyen",
+     "regionType": "COUNTRY",
+     "regionId": "LY"
+    },
+    {
+     "regionName": "Somalia",
+     "regionType": "COUNTRY",
+     "regionId": "SO"
+    },
+    {
+     "regionName": "Iran",
+     "regionType": "COUNTRY",
+     "regionId": "IR"
+    }
+   ]
+  },
+  "returnTerms": {
+   "returnsAccepted": false
+  },
+  "taxes": [
+   {
+    "taxType": "VAT",
+    "taxPercentage": "20.0",
+    "includedInPrice": true,
+    "ebayCollectAndRemitTax": false
+   }
+  ],
+  "localizedAspects": [
+   {
+    "type": "STRING",
+    "name": "Processor",
+    "value": "Intel i7-13700H Processor"
+   },
+   {
+    "type": "STRING",
+    "name": "Graphics Processing Type",
+    "value": "Dedicated Graphics"
+   },
+   {
+    "type": "STRING",
+    "name": "Memory",
+    "value": "32GB DDR5 (1x 32GB) 5600Mhz"
+   },
+   {
+    "type": "STRING",
+    "name": "MPN",
+    "value": "n/a, PRECISION 5680"
+   },
+   {
+    "type": "STRING",
+    "name": "Most Suitable For",
+    "value": "Web and Office, Casual Computing, Gaming, Graphic Design, Workstation"
+   },
+   {
+    "type": "STRING",
+    "name": "SSD Capacity",
+    "value": "512 GB"
+   },
+   {
+    "type": "STRING",
+    "name": "GPU",
+    "value": "NVidia RTX 2000 ada - 8GB Graphics"
+   },
+   {
+    "type": "STRING",
+    "name": "Processor Type",
+    "value": "Intel i7-13700H"
+   },
+   {
+    "type": "STRING",
+    "name": "Colour",
+    "value": "Titan Grey"
+   },
+   {
+    "type": "STRING",
+    "name": "Operating System Edition",
+    "value": "Professional"
+   },
+   {
+    "type": "STRING",
+    "name": "Release Year",
+    "value": "2024"
+   },
+   {
+    "type": "STRING",
+    "name": "Manufacturer Warranty",
+    "value": "3 Years"
+   },
+   {
+    "type": "STRING",
+    "name": "Operating System",
+    "value": "Windows 11 Pro"
+   },
+   {
+    "type": "STRING",
+    "name": "Features",
+    "value": "10/100 LAN Card, Bluetooth, Built-in Microphone, Built-in Webcam, Touchscreen, Virtual Reality Ready, Wi-Fi"
+   },
+   {
+    "type": "STRING",
+    "name": "Hardware Connectivity",
+    "value": "HDMI"
+   },
+   {
+    "type": "STRING",
+    "name": "Screen Size",
+    "value": "16 in"
+   },
+   {
+    "type": "STRING",
+    "name": "RAM Size",
+    "value": "32 GB"
+   },
+   {
+    "type": "STRING",
+    "name": "Processor Speed",
+    "value": "5.00 GHz"
+   },
+   {
+    "type": "STRING",
+    "name": "Brand",
+    "value": "Dell"
+   },
+   {
+    "type": "STRING",
+    "name": "Series",
+    "value": "Precision"
+   },
+   {
+    "type": "STRING",
+    "name": "Type",
+    "value": "Notebook/Laptop"
+   },
+   {
+    "type": "STRING",
+    "name": "Maximum Resolution",
+    "value": "3840 x 2400"
+   },
+   {
+    "type": "STRING",
+    "name": "Model",
+    "value": "Dell Precision 5680 Mobile Workstation"
+   },
+   {
+    "type": "STRING",
+    "name": "Connectivity",
+    "value": "HDMI, USB-C, SD Card Slot, Gigabit Ethernet, USB 3.2"
+   },
+   {
+    "type": "STRING",
+    "name": "Charger Included",
+    "value": "Yes"
+   },
+   {
+    "type": "STRING",
+    "name": "Storage Type",
+    "value": "SSD (Solid State Drive)"
+   },
+   {
+    "type": "STRING",
+    "name": "Country of Origin",
+    "value": "Poland"
+   },
+   {
+    "type": "STRING",
+    "name": "Product Line",
+    "value": "Precision"
+   }
+  ],
+  "topRatedBuyingExperience": false,
+  "buyingOptions": [
+   "FIXED_PRICE",
+   "BEST_OFFER"
+  ],
+  "itemWebUrl": "https://www.ebay.de/itm/198489740505",
+  "description": "<p>Dell Precision 5680, sehr guter Zustand.</p>",
+  "paymentMethods": [
+   {
+    "paymentMethodType": "WALLET",
+    "paymentMethodBrands": [
+     {
+      "paymentMethodBrandType": "PAYPAL"
+     },
+     {
+      "paymentMethodBrandType": "APPLE_PAY"
+     }
+    ]
+   },
+   {
+    "paymentMethodType": "CREDIT_CARD",
+    "paymentMethodBrands": [
+     {
+      "paymentMethodBrandType": "VISA"
+     },
+     {
+      "paymentMethodBrandType": "MASTERCARD"
+     },
+     {
+      "paymentMethodBrandType": "DINERS_CLUB"
+     }
+    ]
+   }
+  ],
+  "immediatePay": false,
+  "enabledForGuestCheckout": false,
+  "eligibleForInlineCheckout": true,
+  "lotSize": 0,
+  "legacyItemId": "198489740505",
+  "priorityListing": false,
+  "adultOnly": false,
+  "categoryId": "177",
+  "listingMarketplaceId": "EBAY_GB"
+ },
+ "395461180737": {
+  "warnings": [
+   {
+    "errorId": 11510,
+    "domain": "API_BROWSE",
+    "category": "APPLICATION",
+    "message": "There was a problem calculating the shipping cost. Please try again."
+   }
+  ],
+  "itemId": "v1|395461180737|0",
+  "title": "Dell Precision 5680 i9-13900H, Touch, 16GB RAM, 1TB SSD, Windows 11, Neu",
+  "shortDescription": "Das Dell Precision 5680 i9-13900H Notebook ist ein leistungsstarkes Gerät mit Intel Core i9 13. Gen Prozessor, 16 GB Arbeitsspeicher und 1 TB SSD-Festplattenkapazität. Der 16-Zoll-Touchscreen sorgt für eine intuitive Bedienung und das Betriebssystem Windows 11 bietet eine moderne Benutzeroberfläche. Das Notebook eignet sich ideal für anspruchsvolle Anwendungen wie Video- und Bildbearbeitung sowie für Gaming. Die Marke Dell steht für hohe Qualität und Zuverlässigkeit. Das Gerät ist neu und unbenutzt.",
+  "price": {
+   "value": "3279.00",
+   "currency": "EUR"
+  },
+  "categoryPath": "Computer, Tablets & Netzwerk|Notebooks & Netbooks|PC Notebooks & Netbooks",
+  "categoryIdPath": "58058|175672|177",
+  "condition": "Neu",
+  "conditionId": "1000",
+  "itemLocation": {
+   "city": "Osterode",
+   "postalCode": "37***",
+   "country": "DE"
+  },
+  "image": {
+   "imageUrl": "https://i.ebayimg.com/images/g/I-EAAOSwEblmZgCb/s-l1600.jpg",
+   "width": 1200,
+   "height": 1600
+  },
+  "additionalImages": [
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/vl4AAOSwEjlmZgCc/s-l1600.jpg",
+    "width": 1200,
+    "height": 1600
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/CBIAAOSwSVlmZgCd/s-l1600.jpg",
+    "width": 1600,
+    "height": 1200
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/flYAAOSwKqBmZgCe/s-l1600.jpg",
+    "width": 1600,
+    "height": 1200
+   },
+   {
+    "imageUrl": "https://i.ebayimg.com/images/g/ZZQAAOSwdO5mZgCe/s-l1600.jpg",
+    "width": 1200,
+    "height": 1600
+   }
+  ],
+  "brand": "Dell",
+  "itemCreationDate": "2024-06-10T14:58:34.000Z",
+  "seller": {
+   "username": "fake-seller-737",
+   "feedbackPercentage": "0.0",
+   "feedbackScore": 0,
+   "sellerAccountType": "INDIVIDUAL"
+  },
+  "estimatedAvailabilities": [
+   {
+    "estimatedAvailabilityStatus": "IN_STOCK",
+    "estimatedAvailableQuantity": 1,
+    "estimatedSoldQuantity": 0,
+    "estimatedRemainingQuantity": 1
+   }
+  ],
+  "shipToLocations": {
+   "regionIncluded": [
+    {
+     "regionName": "Deutschland",
+     "regionType": "COUNTRY",
+     "regionId": "DE"
+    }
+   ],
+   "regionExcluded": [
+    {
+     "regionName": "Russische Föderation",
+     "regionType": "COUNTRY",
+     "regionId": "RU"
+    }
+   ]
+  },
+  "returnTerms": {
+   "returnsAccepted": false
+  },
+  "localizedAspects": [
+   {
+    "type": "STRING",
+    "name": "Marke",
+    "value": "Dell"
+   },
+   {
+    "type": "STRING",
+    "name": "Festplattenkapazität",
+    "value": "1 TB"
+   },
+   {
+    "type": "STRING",
+    "name": "SSD-Festplattenkapazität",
+    "value": "1 TB"
+   },
+   {
+    "type": "STRING",
+    "name": "Serie",
+    "value": "Precision"
+   },
+   {
+    "type": "STRING",
+    "name": "Arbeitsspeichergröße",
+    "value": "16 GB"
+   },
+   {
+    "type": "STRING",
+    "name": "Prozessor",
+    "value": "Intel Core i9 13. Gen"
+   },
+   {
+    "type": "STRING",
+    "name": "Bildschirmgröße",
+    "value": "16 Zoll"
+   }
+  ],
+  "topRatedBuyingExperience": false,
+  "buyingOptions": [
+   "FIXED_PRICE",
+   "BEST_OFFER"
+  ],
+  "itemWebUrl": "https://www.ebay.de/itm/395461180737",
+  "description": "<p>Dell Precision 5680, sehr guter Zustand.</p>",
+  "paymentMethods": [
+   {
+    "paymentMethodType": "OTHER"
+   },
+   {
+    "paymentMethodType": "WALLET",
+    "paymentMethodBrands": [
+     {
+      "paymentMethodBrandType": "PAYPAL"
+     },
+     {
+      "paymentMethodBrandType": "APPLE_PAY"
+     }
+    ]
+   },
+   {
+    "paymentMethodType": "CREDIT_CARD",
+    "paymentMethodBrands": [
+     {
+      "paymentMethodBrandType": "VISA"
+     },
+     {
+      "paymentMethodBrandType": "MASTERCARD"
+     },
+     {
+      "paymentMethodBrandType": "DINERS_CLUB"
+     }
+    ]
+   }
+  ],
+  "immediatePay": false,
+  "enabledForGuestCheckout": false,
+  "eligibleForInlineCheckout": true,
+  "lotSize": 0,
+  "legacyItemId": "395461180737",
+  "priorityListing": true,
+  "adultOnly": false,
+  "categoryId": "177",
+  "listingMarketplaceId": "EBAY_DE"
+ }
+}

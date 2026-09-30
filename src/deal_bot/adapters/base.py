@@ -39,6 +39,7 @@ class Http:
         )
         self.min_interval = min_interval
         self.respect_robots = respect_robots
+        self.host_intervals: dict[str, float] = {}  # overrides min_interval, e.g. for an API with its own quota
         self._last: dict[str, float] = {}
         self._robots: dict[str, RobotFileParser | None] = {}
         self._lock = threading.Lock()
@@ -46,7 +47,7 @@ class Http:
     def _wait(self, host: str) -> None:
         with self._lock:
             now = time.monotonic()
-            delay = self._last.get(host, 0) + self.min_interval - now
+            delay = self._last.get(host, 0) + self.host_intervals.get(host, self.min_interval) - now
             self._last[host] = now + max(delay, 0)
         if delay > 0:
             time.sleep(delay)
@@ -65,11 +66,12 @@ class Http:
         rp = self._robots[origin]
         return rp is None or rp.can_fetch(USER_AGENT, url)
 
-    def get(self, url: str, **params) -> httpx.Response:
-        if self.respect_robots and not self._allowed(url):
+    def get(self, url: str, *, headers: dict[str, str] | None = None, robots: bool = True, **params) -> httpx.Response:
+        """robots=False is for official APIs, which robots.txt does not govern."""
+        if robots and self.respect_robots and not self._allowed(url):
             raise Blocked(f"robots.txt disallows {url}")
         self._wait(urlsplit(url).netloc)
-        resp = self.client.get(url, params=params or None)
+        resp = self.client.get(url, params=params or None, headers=headers)
         if resp.status_code in (401, 403, 429) or "captcha" in resp.text[:5000].lower():
             raise Blocked(f"{resp.status_code} from {urlsplit(url).netloc}")
         resp.raise_for_status()

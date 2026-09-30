@@ -27,12 +27,16 @@ _PART_WORDS = re.compile(
 _HAS_SPEC = re.compile(r"\b(i[3579][- ]?1[0-4]\d{3}|ultra\s?[579]|u[579]\s?\d{3}|\d{2}\s?(gb|go)\b)", re.I)
 
 
+def looks_like_part(title: str) -> bool:
+    return bool(_PART_WORDS.search(title)) and not _HAS_SPEC.search(title)
+
+
 def prefilter(listing: RawListing, kb: KnowledgeBase, target: Target, rates: Rates) -> str | None:
     """Return a rejection reason, or None to keep the listing for extraction."""
     text = f"{listing.title} {' '.join(listing.structured.values())}"
     if not kb.mentions_any_model(text):
         return "no target model mentioned"
-    if _PART_WORDS.search(listing.title) and not _HAS_SPEC.search(listing.title):
+    if looks_like_part(listing.title):
         return "part or accessory"
     if not listing.available:
         return "sold out or removed"

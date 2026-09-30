@@ -10,6 +10,7 @@ import typer
 from dotenv import load_dotenv
 
 from deal_bot.adapters.base import Adapter, Http
+from deal_bot.adapters.ebay import EbayAdapter
 from deal_bot.adapters.refurbed import RefurbedAdapter
 from deal_bot.adapters.shops import ShopConfig, ShopifyAdapter, WooCommerceAdapter
 from deal_bot.config import ROOT, load_gpu_patterns, load_models, load_prices, load_sources, load_target
@@ -32,6 +33,8 @@ def build_adapters(sources: dict, only: set[str] | None) -> list[Adapter]:
     adapters += [WooCommerceAdapter(ShopConfig(**c)) for c in sources.get("woocommerce", [])]
     if rb := sources.get("refurbed"):
         adapters.append(RefurbedAdapter(rb["domains"]))
+    if eb := sources.get("ebay"):
+        adapters.append(EbayAdapter(eb["marketplaces"], eb["category_ids"]))
     return [a for a in adapters if not only or a.name in only]
 
 

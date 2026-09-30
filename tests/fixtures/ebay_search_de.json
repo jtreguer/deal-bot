@@ -1,0 +1,446 @@
+{
+ "total": 5,
+ "itemSummaries": [
+  {
+   "itemId": "v1|147226012324|0",
+   "title": "Dell Precision 5680 16'' i7-13800H 4,75GHz 16GB 512GB RTX A1000",
+   "leafCategoryIds": [
+    "177"
+   ],
+   "categories": [
+    {
+     "categoryId": "177",
+     "categoryName": "PC Notebooks & Netbooks"
+    },
+    {
+     "categoryId": "58058",
+     "categoryName": "Computer, Tablets & Netzwerk"
+    },
+    {
+     "categoryId": "175672",
+     "categoryName": "Notebooks & Netbooks"
+    }
+   ],
+   "image": {
+    "imageUrl": "https://i.ebayimg.com/images/g/4lUAAeSwADBqu4lI/s-l225.jpg"
+   },
+   "price": {
+    "value": "749.00",
+    "currency": "EUR"
+   },
+   "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C147226012324%7C0",
+   "seller": {
+    "username": "fake-seller-324",
+    "feedbackPercentage": "99.9",
+    "feedbackScore": 23517,
+    "sellerAccountType": "BUSINESS"
+   },
+   "marketingPrice": {
+    "discountPercentage": "0"
+   },
+   "condition": "Gut - Refurbished",
+   "conditionId": "2030",
+   "thumbnailImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/4lUAAeSwADBqu4lI/s-l500.jpg"
+    }
+   ],
+   "shippingOptions": [
+    {
+     "shippingCostType": "FIXED",
+     "shippingCost": {
+      "value": "15.90",
+      "currency": "EUR"
+     }
+    }
+   ],
+   "distanceFromPickupLocation": {
+    "unitOfMeasure": "km",
+    "value": "460"
+   },
+   "buyingOptions": [
+    "FIXED_PRICE"
+   ],
+   "itemWebUrl": "https://www.ebay.de/itm/147226012324?_skw=precision+5680",
+   "itemLocation": {
+    "postalCode": "45***",
+    "country": "DE"
+   },
+   "additionalImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/-D4AAeSwevlqu4lI/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/DsoAAeSwYa5qu4lI/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/2fYAAeSw8VZqu4lI/s-l225.jpg"
+    }
+   ],
+   "adultOnly": false,
+   "legacyItemId": "147226012324",
+   "availableCoupons": true,
+   "itemOriginDate": "2026-03-27T06:24:29.000Z",
+   "itemCreationDate": "2026-03-27T06:24:29.000Z",
+   "topRatedBuyingExperience": false,
+   "priorityListing": false,
+   "listingMarketplaceId": "EBAY_DE"
+  },
+  {
+   "itemId": "v1|398090174263|0",
+   "title": "Dell Precision 5680 X2W33 16\" UHD+ OLED touch i9-13900H 32GB 1TB 3500 ADA W11P",
+   "leafCategoryIds": [
+    "177"
+   ],
+   "categories": [
+    {
+     "categoryId": "177",
+     "categoryName": "PC Notebooks & Netbooks"
+    },
+    {
+     "categoryId": "58058",
+     "categoryName": "Computer, Tablets & Netzwerk"
+    },
+    {
+     "categoryId": "175672",
+     "categoryName": "Notebooks & Netbooks"
+    }
+   ],
+   "image": {
+    "imageUrl": "https://i.ebayimg.com/images/g/9IQAAeSw1bBpRQsd/s-l225.jpg"
+   },
+   "price": {
+    "value": "2000.00",
+    "currency": "EUR"
+   },
+   "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C398090174263%7C0",
+   "seller": {
+    "username": "fake-seller-263",
+    "feedbackPercentage": "100.0",
+    "feedbackScore": 58,
+    "sellerAccountType": "INDIVIDUAL"
+   },
+   "condition": "Gebraucht",
+   "conditionId": "3000",
+   "thumbnailImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/9IQAAeSw1bBpRQsd/s-l1600.jpg"
+    }
+   ],
+   "shippingOptions": [
+    {
+     "shippingCostType": "FIXED",
+     "shippingCost": {
+      "value": "22.49",
+      "currency": "EUR"
+     }
+    }
+   ],
+   "distanceFromPickupLocation": {
+    "unitOfMeasure": "km",
+    "value": "500"
+   },
+   "buyingOptions": [
+    "FIXED_PRICE",
+    "BEST_OFFER"
+   ],
+   "itemWebUrl": "https://www.ebay.de/itm/398090174263?_skw=precision+5680",
+   "itemLocation": {
+    "postalCode": "70***",
+    "country": "DE"
+   },
+   "additionalImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/tPgAAeSwy2xpRQsg/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/WQUAAeSwB9lpRQsk/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/AOYAAeSwOjZpRQso/s-l225.jpg"
+    }
+   ],
+   "adultOnly": false,
+   "legacyItemId": "398090174263",
+   "availableCoupons": false,
+   "itemOriginDate": "2025-12-19T08:25:56.000Z",
+   "itemCreationDate": "2026-06-21T10:49:17.000Z",
+   "topRatedBuyingExperience": false,
+   "priorityListing": false,
+   "listingMarketplaceId": "EBAY_DE"
+  },
+  {
+   "itemId": "v1|198489740505|0",
+   "title": "Dell Precision 5680,16\",i7-13700H,32GB,512GB SSD,8GB RTX2000 ada,Touch,UHD+,3Yrs",
+   "leafCategoryIds": [
+    "177"
+   ],
+   "categories": [
+    {
+     "categoryId": "177",
+     "categoryName": "PC Laptops & Netbooks"
+    },
+    {
+     "categoryId": "58058",
+     "categoryName": "Computers/Tablets & Networking"
+    },
+    {
+     "categoryId": "175672",
+     "categoryName": "Laptops & Netbooks"
+    }
+   ],
+   "image": {
+    "imageUrl": "https://i.ebayimg.com/images/g/g5sAAeSwzLpqIuoi/s-l225.jpg"
+   },
+   "price": {
+    "value": "2962.09",
+    "currency": "EUR",
+    "convertedFromValue": "2539.00",
+    "convertedFromCurrency": "GBP"
+   },
+   "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C198489740505%7C0",
+   "seller": {
+    "username": "fake-seller-505",
+    "feedbackPercentage": "100.0",
+    "feedbackScore": 986,
+    "sellerAccountType": "BUSINESS"
+   },
+   "condition": "Opened – never used",
+   "conditionId": "1500",
+   "thumbnailImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/g5sAAeSwzLpqIuoi/s-l1600.jpg"
+    }
+   ],
+   "shippingOptions": [
+    {
+     "shippingCostType": "FIXED",
+     "shippingCost": {
+      "value": "144.74",
+      "currency": "EUR",
+      "convertedFromValue": "124.07",
+      "convertedFromCurrency": "GBP"
+     }
+    }
+   ],
+   "distanceFromPickupLocation": {
+    "unitOfMeasure": "km",
+    "value": "770"
+   },
+   "buyingOptions": [
+    "FIXED_PRICE",
+    "BEST_OFFER"
+   ],
+   "itemWebUrl": "https://www.ebay.de/itm/198489740505?_skw=precision+5680",
+   "itemLocation": {
+    "postalCode": "IM8***",
+    "country": "GB"
+   },
+   "additionalImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/wHwAAeSwHClqIuoi/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/IwAAAeSwgglqIuoi/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/jkAAAeSwLApqIuoi/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/KVMAAeSwY0pqIuoi/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/t78AAeSwhMhqIuoh/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/p~4AAeSwL-BqIuoi/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/r5IAAeSw4sRqIuoi/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/qiIAAeSwK6xqIuoi/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/hIoAAeSwPZdqIuoi/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/q~0AAeSwWTNqIuoi/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/wLkAAeSwK4JqIuoi/s-l225.jpg"
+    }
+   ],
+   "adultOnly": false,
+   "legacyItemId": "198489740505",
+   "availableCoupons": false,
+   "itemOriginDate": "2026-07-10T13:30:36.000Z",
+   "itemCreationDate": "2026-07-10T13:30:36.000Z",
+   "topRatedBuyingExperience": false,
+   "priorityListing": false,
+   "listingMarketplaceId": "EBAY_GB"
+  },
+  {
+   "itemId": "v1|395461180737|0",
+   "title": "Dell Precision 5680 i9-13900H, Touch, 16GB RAM, 1TB SSD, Windows 11, Neu",
+   "leafCategoryIds": [
+    "177"
+   ],
+   "categories": [
+    {
+     "categoryId": "177",
+     "categoryName": "PC Notebooks & Netbooks"
+    },
+    {
+     "categoryId": "58058",
+     "categoryName": "Computer, Tablets & Netzwerk"
+    },
+    {
+     "categoryId": "175672",
+     "categoryName": "Notebooks & Netbooks"
+    }
+   ],
+   "image": {
+    "imageUrl": "https://i.ebayimg.com/images/g/I-EAAOSwEblmZgCb/s-l225.jpg"
+   },
+   "price": {
+    "value": "3279.00",
+    "currency": "EUR"
+   },
+   "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C395461180737%7C0",
+   "seller": {
+    "username": "fake-seller-737",
+    "feedbackPercentage": "0.0",
+    "feedbackScore": 0,
+    "sellerAccountType": "INDIVIDUAL"
+   },
+   "condition": "Neu",
+   "conditionId": "1000",
+   "thumbnailImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/I-EAAOSwEblmZgCb/s-l1600.jpg"
+    }
+   ],
+   "distanceFromPickupLocation": {
+    "unitOfMeasure": "km",
+    "value": "650"
+   },
+   "buyingOptions": [
+    "FIXED_PRICE",
+    "BEST_OFFER"
+   ],
+   "itemWebUrl": "https://www.ebay.de/itm/395461180737?_skw=precision+5680",
+   "itemLocation": {
+    "postalCode": "37***",
+    "country": "DE"
+   },
+   "additionalImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/vl4AAOSwEjlmZgCc/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/CBIAAOSwSVlmZgCd/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/flYAAOSwKqBmZgCe/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/ZZQAAOSwdO5mZgCe/s-l225.jpg"
+    }
+   ],
+   "adultOnly": false,
+   "legacyItemId": "395461180737",
+   "availableCoupons": false,
+   "itemOriginDate": "2024-06-09T19:22:05.000Z",
+   "itemCreationDate": "2024-06-10T21:03:15.000Z",
+   "topRatedBuyingExperience": false,
+   "priorityListing": false,
+   "listingMarketplaceId": "EBAY_DE"
+  },
+  {
+   "itemId": "v1|100000000001|0",
+   "title": "Akku Batterie für Dell Precision 5680 5690",
+   "leafCategoryIds": [
+    "177"
+   ],
+   "categories": [
+    {
+     "categoryId": "177",
+     "categoryName": "PC Notebooks & Netbooks"
+    },
+    {
+     "categoryId": "58058",
+     "categoryName": "Computer, Tablets & Netzwerk"
+    },
+    {
+     "categoryId": "175672",
+     "categoryName": "Notebooks & Netbooks"
+    }
+   ],
+   "image": {
+    "imageUrl": "https://i.ebayimg.com/images/g/4lUAAeSwADBqu4lI/s-l225.jpg"
+   },
+   "price": {
+    "value": "749.00",
+    "currency": "EUR"
+   },
+   "itemHref": "https://api.ebay.com/buy/browse/v1/item/v1%7C147226012324%7C0",
+   "seller": {
+    "username": "fake-seller-324",
+    "feedbackPercentage": "99.9",
+    "feedbackScore": 23517,
+    "sellerAccountType": "BUSINESS"
+   },
+   "marketingPrice": {
+    "discountPercentage": "0"
+   },
+   "condition": "Gut - Refurbished",
+   "conditionId": "2030",
+   "thumbnailImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/4lUAAeSwADBqu4lI/s-l500.jpg"
+    }
+   ],
+   "shippingOptions": [
+    {
+     "shippingCostType": "FIXED",
+     "shippingCost": {
+      "value": "15.90",
+      "currency": "EUR"
+     }
+    }
+   ],
+   "distanceFromPickupLocation": {
+    "unitOfMeasure": "km",
+    "value": "460"
+   },
+   "buyingOptions": [
+    "FIXED_PRICE"
+   ],
+   "itemWebUrl": "https://www.ebay.de/itm/100000000001",
+   "itemLocation": {
+    "postalCode": "45***",
+    "country": "DE"
+   },
+   "additionalImages": [
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/-D4AAeSwevlqu4lI/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/DsoAAeSwYa5qu4lI/s-l225.jpg"
+    },
+    {
+     "imageUrl": "https://i.ebayimg.com/images/g/2fYAAeSw8VZqu4lI/s-l225.jpg"
+    }
+   ],
+   "adultOnly": false,
+   "legacyItemId": "100000000001",
+   "availableCoupons": true,
+   "itemOriginDate": "2026-03-27T06:24:29.000Z",
+   "itemCreationDate": "2026-03-27T06:24:29.000Z",
+   "topRatedBuyingExperience": false,
+   "priorityListing": false,
+   "listingMarketplaceId": "EBAY_DE"
+  }
+ ]
+}
