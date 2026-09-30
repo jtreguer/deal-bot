@@ -36,6 +36,8 @@ API = "https://api.ebay.com"
 TOKEN_URL = f"{API}/identity/v1/oauth2/token"
 SCOPE = "https://api.ebay.com/oauth/api_scope"
 PAGE_SIZE = 200
+# Without this filter the search returns fixed-price listings only, and every auction is missed.
+BUYING_OPTIONS = "buyingOptions:{AUCTION|FIXED_PRICE}"
 MAX_OFFSET = 1000
 _SELLER_TYPE = {"BUSINESS": SellerType.BUSINESS, "INDIVIDUAL": SellerType.PRIVATE}
 _OUT_OF_STOCK = "OUT_OF_STOCK"
@@ -203,7 +205,7 @@ class EbayAdapter:
         while True:
             page = self._get(
                 http, "item_summary/search", marketplace, target,
-                q=q, category_ids=self.category_ids, limit=PAGE_SIZE, offset=offset,
+                q=q, category_ids=self.category_ids, filter=BUYING_OPTIONS, limit=PAGE_SIZE, offset=offset,
             )  # fmt: skip
             yield from page.get("itemSummaries", [])
             offset += PAGE_SIZE

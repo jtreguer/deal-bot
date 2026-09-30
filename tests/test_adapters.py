@@ -120,6 +120,7 @@ def test_ebay_search_merges_marketplaces_and_skips_parts(target, monkeypatch):
             return httpx.Response(200, json={"access_token": "t", "expires_in": 7200})
         assert request.headers["Authorization"] == "Bearer t"
         if request.url.path.endswith("/item_summary/search"):
+            assert "AUCTION" in request.url.params["filter"]  # otherwise eBay leaves auctions out
             return httpx.Response(200, text=search)
         legacy = request.url.path.split("%7C")[1] if "%7C" in request.url.path else request.url.path.split("|")[1]
         detail_calls.append(legacy)
@@ -134,3 +135,17 @@ def test_ebay_search_merges_marketplaces_and_skips_parts(target, monkeypatch):
     assert "100000000001" not in detail_calls  # battery: no getItem
     assert len(detail_calls) == len(set(detail_calls)) == 4
     assert all(x.seller.name is None for x in listings)
+
+
+def test_ebay_auction_uses_current_bid():
+    summaries, _ = _ebay_fixtures()
+    auction = summaries["398090174263"] | {
+        "buyingOptions": ["AUCTION", "BEST_OFFER"],
+        "currentBidPrice": {"value": "1150.00", "currency": "EUR"},
+        "bidCount": 3,
+        "itemEndDate": "2026-10-04T00:03:02.000Z",
+    }
+    x = parse_item(auction, None, "FR", "FR-75001")
+    assert x.is_auction and x.bids == 3
+    assert x.price.amount == Decimal("1150.00")
+    assert x.auction_ends_at.isoformat() == "2026-10-04T00:03:02+00:00"
