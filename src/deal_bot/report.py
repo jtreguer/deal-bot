@@ -1,4 +1,4 @@
-"""Static HTML and JSON output of a run."""
+"""Static HTML, Markdown and JSON output of a run."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 
 from deal_bot.pipeline import RunResult
 
-_env = Environment(loader=PackageLoader("deal_bot"), autoescape=select_autoescape(["html", "j2"]))
+_env = Environment(loader=PackageLoader("deal_bot"), autoescape=select_autoescape(["html.j2"]))
 
 
 def manual_links(queries: list[str]) -> list[tuple[str, str]]:
@@ -30,18 +30,19 @@ def manual_links(queries: list[str]) -> list[tuple[str, str]]:
     return links
 
 
-def write_reports(r: RunResult, out_dir: Path) -> tuple[Path, Path]:
+def write_reports(r: RunResult, out_dir: Path) -> tuple[Path, Path, Path]:
+    """Write the HTML, Markdown and JSON reports; return their paths in that order."""
     out_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y-%m-%d_%H%M")
-    html_path = out_dir / f"{stamp}.html"
-    json_path = out_dir / f"{stamp}.json"
-    html = _env.get_template("report.html.j2").render(
+    html_path, md_path, json_path = (out_dir / f"{stamp}.{ext}" for ext in ("html", "md", "json"))
+    context = dict(
         r=r,
         generated=datetime.now().strftime("%Y-%m-%d %H:%M"),
         gbp=Decimal(1) / r.rates.per_eur.get("GBP", Decimal(1)),
         manual_links=manual_links(r.target.queries),
     )
-    html_path.write_text(html, encoding="utf-8")
+    html_path.write_text(_env.get_template("report.html.j2").render(**context), encoding="utf-8")
+    md_path.write_text(_env.get_template("report.md.j2").render(**context), encoding="utf-8")
     payload = {
         "target": r.target.slug,
         "fx_day": r.rates.day,
@@ -52,4 +53,4 @@ def write_reports(r: RunResult, out_dir: Path) -> tuple[Path, Path]:
         "discarded": dict(r.rejected_tally),
     }
     json_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
-    return html_path, json_path
+    return html_path, md_path, json_path

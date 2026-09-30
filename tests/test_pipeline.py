@@ -102,7 +102,12 @@ def test_survey_slice_end_to_end(target, kb, prices, rates, tmp_path):
     assert "318922405121" in ranked_ids and "398090174263" in ranked_ids
     assert "3491938688" not in ranked_ids
 
-    html, js = write_reports(r, tmp_path)
+    html, md, js = write_reports(r, tmp_path)
     text = html.read_text()
     assert "318922405121" in text and "Leboncoin" in text
     assert js.exists()
+    table = md.read_text()
+    assert "318922405121" in table and "Leboncoin" in table
+    assert "&#" not in table and "&amp;" not in table  # Markdown is not HTML-escaped
+    rows = [line for line in table.splitlines() if line.startswith("| ")]
+    assert len({line.count(" | ") for line in rows[: len(r.ranked) + 1]}) == 1  # titles cannot break the table

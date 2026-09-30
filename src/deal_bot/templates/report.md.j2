@@ -1,0 +1,58 @@
+{%- macro cell(text) %}{{ (text or '')|replace('|', '/')|replace('\n', ' ') }}{% endmacro -%}
+{%- macro rows(items, show_rank) -%}
+| {% if show_rank %}# | {% endif %}Landed € | Fair € | Discount | Risk | Listing | Config | Condition | Seller | Delivery |
+|{% if show_rank %}--:|{% endif %}--:|--:|--:|--:|---|---|---|---|---|
+{% for s in items %}{% set sp = s.spec %}{% set v = s.validation -%}
+| {% if show_rank %}{{ loop.index }} | {% endif -%}
+{% if s.landed %}{{ "%.0f"|format(s.landed.total_eur) }}{% if s.landed.estimated %}\*{% endif %}{% endif %} | {# -#}
+{% if s.fair %}{{ "%.0f"|format(s.fair.value_eur) }}{% endif %} | {# -#}
+{% if s.discount is not none %}{{ "%+.0f"|format(s.discount * 100) }}%{% if s.adjusted_discount is not none %} (adj. {{ "%+.0f"|format(s.adjusted_discount * 100) }}%){% endif %}{% endif %} | {# -#}
+{{ s.risk }}{% if s.risk_reasons %}: {{ cell(s.risk_reasons|join('; ')) }}{% endif %} | {# -#}
+[{{ cell(s.raw.title[:90])|replace('[', '(')|replace(']', ')') }}]({{ s.raw.url }}) {{ s.raw.source }}{% if s.raw.is_auction %}, auction, {{ s.raw.bids or 0 }} bids{% if s.raw.auction_ends_at %}, ends {{ s.raw.auction_ends_at.strftime('%d %b %H:%M') }}{% endif %}{% endif %}{% for d in s.duplicates %}; also {{ d }}{% endfor %}{% for x in s.verdict_reasons %}; **{{ cell(x) }}**{% endfor %} | {# -#}
+{% if sp %}{{ v.model_key or sp.model or '?' }}, {{ v.cpu_key or sp.cpu or 'CPU ?' }}, {{ sp.ram_gb ~ ' GB' if sp.ram_gb else 'RAM ?' }}, {{ v.gpu_key or sp.gpu or 'GPU ?' }}, {{ (sp.ssd_gb ~ ' GB SSD') if sp.ssd_gb else 'SSD ?' }}, {{ sp.screen.value }}{% if sp.keyboard_layout %}, {{ cell(sp.keyboard_layout) }}{% endif %}{% else %}{{ cell(s.extraction_error) }}{% endif %} | {# -#}
+{% if sp %}{{ sp.condition.value }}{% if sp.warranty_until %}, warranty to {{ sp.warranty_until }}{% elif sp.warranty_months %}, {{ sp.warranty_months }} months warranty{% endif %}{% if sp.charger_included == false %}, no charger{% endif %}{% endif %} | {# -#}
+{{ s.raw.seller.name or '' }}{% if s.raw.seller.name %}, {% endif %}{{ s.raw.seller.type.value }}{% if s.raw.seller.feedback_count is not none %}, {{ s.raw.seller.feedback_count }} fb{% endif %} | {# -#}
+{{ s.raw.delivery.value }}, {{ s.raw.location.country }}{% if s.pickup_zone %}, zone {{ s.pickup_zone }}{% endif %}, {{ s.raw.protection.value }} |
+{% endfor %}
+{%- endmacro -%}
+# {{ r.target.name }}: best deals
+
+Run {{ generated }}. Prices landed in France, VAT included. ECB rates of {{ r.rates.day }} (1 GBP = {{ "%.4f"|format(gbp) }} EUR). \* = includes estimated parts.
+
+**Sources:** {% for name, st in r.source_status.items() %}{{ name }} ({{ st }}){{ ", " if not loop.last }}{% endfor %}
+
+**Market** (passing listings, landed €): {% for gpu, n, lo, hi in r.market_bands() %}{{ gpu }} {{ n }} × {{ "%.0f"|format(lo) }}–{{ "%.0f"|format(hi) }}{{ "; " if not loop.last }}{% else %}no passing listings{% endfor %}
+
+**Counts:** {{ r.ranked|length }} ranked, {{ r.suspicious|length }} suspicious, {{ r.held|length }} need confirmation, {{ r.rejected_tally.total() }} discarded
+
+## Ranked
+
+{% if r.ranked %}{{ rows(r.ranked, true) }}{% else %}Nothing passes every filter in this run.
+{% endif %}
+{% if r.ranked %}
+### Landed cost of the top {{ [r.ranked|length, 10]|min }}
+
+{% for s in r.ranked[:10] %}{{ loop.index }}. {{ "%.0f"|format(s.landed.total_eur) }} € = {% for label, amt, est in s.landed.parts %}{{ label }} {{ "%.2f"|format(amt) }}{% if est %} (est.){% endif %}{{ " + " if not loop.last }}{% endfor %}{% for n in s.landed.notes %}. {{ n }}{% endfor %}
+{% endfor %}
+{% endif %}
+{% if r.suspicious %}
+## Suspicious (risk ≥ {{ r.target.ranking.suspicious_risk }})
+
+{{ rows(r.suspicious, false) }}
+{% endif %}
+{% if r.held %}
+## Needs confirmation from the seller
+
+{{ rows(r.held, false) }}
+{% endif %}
+## Discarded
+
+{% for reason, n in r.rejected_tally.most_common() %}- {{ n }} × {{ reason }}
+{% else %}- none
+{% endfor %}
+{% if manual_links %}
+## Check by hand
+
+{% for label, url in manual_links %}- [{{ label }}]({{ url }})
+{% endfor %}
+{% endif %}
