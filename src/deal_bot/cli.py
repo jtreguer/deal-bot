@@ -47,7 +47,7 @@ def run(
     interval: Annotated[float, typer.Option(help="Seconds between requests to one host")] = 5.0,
     verbose: Annotated[bool, typer.Option("-v")] = False,
 ) -> None:
-    """Collect, score and rank listings; write an HTML and a JSON report."""
+    """Collect, score and rank listings; write HTML, Markdown and JSON reports."""
     logging.basicConfig(level=logging.INFO if verbose else logging.WARNING, format="%(levelname)s %(message)s")
     target = load_target(target_file)
     kb = KnowledgeBase(load_models(target.models), load_gpu_patterns())
