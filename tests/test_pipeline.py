@@ -2,7 +2,18 @@ from decimal import Decimal
 
 from conftest import TODAY, FakeExtractor, make_listing, make_spec
 
-from deal_bot.models import Condition, Delivery, Location, Money, Protection, Screen, SellerInfo, SellerType
+from deal_bot.models import (
+    Condition,
+    Delivery,
+    LandedCost,
+    Location,
+    Money,
+    Protection,
+    Scored,
+    Screen,
+    SellerInfo,
+    SellerType,
+)
 from deal_bot.pipeline import RunResult, score_listings
 from deal_bot.report import write_reports
 from deal_bot.scoring import rank
@@ -111,3 +122,14 @@ def test_survey_slice_end_to_end(target, kb, prices, rates, tmp_path):
     assert "&#" not in table and "&amp;" not in table  # Markdown is not HTML-escaped
     rows = [line for line in table.splitlines() if line.startswith("| ")]
     assert len({line.count(" | ") for line in rows[: len(r.ranked) + 1]}) == 1  # titles cannot break the table
+
+
+def test_market_bands_leave_out_impossible_configs(kb, target, rates):
+    def item(gpu, price):
+        listing = make_listing()
+        spec = make_spec(gpu=gpu)
+        landed = LandedCost(total_eur=price, parts=[])
+        return Scored(raw=listing, spec=spec, validation=kb.validate(spec, ""), landed=landed)
+
+    r = RunResult(target, rates, TODAY, items=[item("RTX 2000 Ada", 2000), item("RTX 4090", 4000)])
+    assert r.market_bands() == [("rtx-2000-ada", 1, 2000.0, 2000.0)]

@@ -95,7 +95,8 @@ ul.plain li { padding: 4px 0; border-bottom: 1px solid var(--line); }
   <td><a href="{{ s.raw.url }}" target="_blank" rel="noopener">{{ s.raw.title[:110] }}</a>
     <div class="small">{{ s.raw.source }}{% if s.raw.is_auction %} · auction, {{ s.raw.bids or 0 }} bids{% if s.raw.auction_ends_at %}, ends {{ s.raw.auction_ends_at.strftime('%d %b %H:%M') }}{% endif %}{% endif %}</div>
     {% for d in s.duplicates %}<div class="small">also listed as {{ d }}</div>{% endfor %}
-    {% for x in s.verdict_reasons %}<div class="small warn">{{ x }}</div>{% endfor %}</td>
+    {% for x in s.verdict_reasons %}<div class="small warn">{{ x }}</div>{% endfor %}
+    {% for x in s.validation.invalid %}<div class="small bad">⚠ impossible config: {{ x }}</div>{% endfor %}</td>
   <td>{% if sp %}
     <span class="chip">{{ v.model_key or sp.model or '?' }}</span>
     <span class="chip">{{ v.cpu_key or sp.cpu or 'CPU ?' }}</span>

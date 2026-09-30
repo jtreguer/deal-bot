@@ -46,10 +46,13 @@ class RunResult:
         return c
 
     def market_bands(self) -> list[tuple[str, int, float, float]]:
-        """(GPU tier, count, min, max) over passing listings, from landed prices."""
+        """(GPU tier, count, min, max) over passing listings, from landed prices.
+
+        Listings flagged with an impossible configuration are left out: their GPU tier is not trustworthy.
+        """
         bands: dict[str, list[float]] = {}
         for s in self.items:
-            if s.verdict == Verdict.PASS and s.landed and not s.duplicate_of:
+            if s.verdict == Verdict.PASS and s.landed and not s.duplicate_of and not s.validation.invalid:
                 bands.setdefault(s.validation.gpu_key or "?", []).append(float(s.landed.total_eur))
         return sorted((k, len(v), min(v), max(v)) for k, v in bands.items())
 

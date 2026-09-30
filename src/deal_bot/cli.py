@@ -64,7 +64,8 @@ def run(
         typer.echo(f"{name:20} {status}")
     typer.echo(f"\n{len(result.ranked)} ranked, {len(result.suspicious)} suspicious, {len(result.held)} to confirm")
     for i, s in enumerate(result.ranked[:10], 1):
-        typer.echo(f"{i:2}. {s.landed.total_eur:>8} EUR  {s.discount:+.0%}  risk {s.risk:>3}  {s.raw.title[:70]}")
+        flag = "⚠" if s.validation.invalid else " "
+        typer.echo(f"{i:2}. {s.landed.total_eur:>8} EUR  {s.discount:+.0%}  risk {s.risk:>3} {flag} {s.raw.title[:70]}")
     typer.echo(f"\nReport: {html}\n        {md}")
 
 

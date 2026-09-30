@@ -160,6 +160,7 @@ class Validation(BaseModel):
     cpu_class: str | None = None
     gpu_key: str | None = None
     invalid: list[str] = Field(default_factory=list)  # values that do not exist for this model
+    invalid_fields: list[str] = Field(default_factory=list)  # cpu | gpu | ram, matching `invalid`
     warnings: list[str] = Field(default_factory=list)
 
 

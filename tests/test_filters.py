@@ -85,3 +85,29 @@ def test_pickup_in_paris_passes(kb, target):
     s = _scored(kb, make_spec(), delivery=Delivery.PICKUP, location=loc)
     apply_hard_filters(s, target)
     assert (s.verdict, s.pickup_zone) == (Verdict.PASS, "Paris")
+
+
+def _filtered(kb, target, **spec_kw):
+    listing = make_listing(title="Dell Precision laptop")
+    spec = make_spec(**spec_kw)
+    s = Scored(raw=listing, spec=spec, validation=kb.validate(spec, listing.title))
+    apply_hard_filters(s, target)
+    return s
+
+
+def test_impossible_gpu_is_flagged_not_rejected(kb, target):
+    # The 5690 never had an RTX A1000, which the target excludes. The claim is wrong, so it cannot reject.
+    s = _filtered(kb, target, model="Precision 5690", cpu="Core Ultra 7 165H", gpu="RTX A1000")
+    assert s.verdict == Verdict.PASS
+    assert s.validation.invalid_fields == ["gpu"]
+
+
+def test_impossible_ram_is_flagged_not_rejected(kb, target):
+    s = _filtered(kb, target, ram_gb=24)
+    assert s.verdict == Verdict.PASS
+    assert s.validation.invalid_fields == ["ram"]
+
+
+def test_possible_low_ram_is_still_rejected(kb, target):
+    s = _filtered(kb, target, ram_gb=16)
+    assert s.verdict == Verdict.REJECT and not s.validation.invalid

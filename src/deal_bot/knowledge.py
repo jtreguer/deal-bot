@@ -64,10 +64,15 @@ class KnowledgeBase:
         info = self.models.get(v.model_key or "")
         if not info:
             return v
+
+        def invalid(field: str, message: str) -> None:
+            v.invalid_fields.append(field)
+            v.invalid.append(message)
+
         if v.cpu_key and v.cpu_key not in info.cpus:
-            v.invalid.append(f"CPU {v.cpu_key} was never offered in the {info.label}")
+            invalid("cpu", f"CPU {v.cpu_key} was never offered in the {info.label}")
         if v.gpu_key and v.gpu_key not in info.gpus:
-            v.invalid.append(f"GPU {spec.gpu!r} was never offered in the {info.label}")
+            invalid("gpu", f"GPU {spec.gpu!r} was never offered in the {info.label}")
         if spec.ram_gb and spec.ram_gb not in info.ram_gb:
-            v.invalid.append(f"{spec.ram_gb} GB RAM is not a factory option (RAM is soldered)")
+            invalid("ram", f"{spec.ram_gb} GB RAM is not a factory option (RAM is soldered)")
         return v

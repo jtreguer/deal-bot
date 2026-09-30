@@ -8,7 +8,7 @@
 {% if s.fair %}{{ "%.0f"|format(s.fair.value_eur) }}{% endif %} | {# -#}
 {% if s.discount is not none %}{{ "%+.0f"|format(s.discount * 100) }}%{% if s.adjusted_discount is not none %} (adj. {{ "%+.0f"|format(s.adjusted_discount * 100) }}%){% endif %}{% endif %} | {# -#}
 {{ s.risk }}{% if s.risk_reasons %}: {{ cell(s.risk_reasons|join('; ')) }}{% endif %} | {# -#}
-[{{ cell(s.raw.title[:90])|replace('[', '(')|replace(']', ')') }}]({{ s.raw.url }}) {{ s.raw.source }}{% if s.raw.is_auction %}, auction, {{ s.raw.bids or 0 }} bids{% if s.raw.auction_ends_at %}, ends {{ s.raw.auction_ends_at.strftime('%d %b %H:%M') }}{% endif %}{% endif %}{% for d in s.duplicates %}; also {{ d }}{% endfor %}{% for x in s.verdict_reasons %}; **{{ cell(x) }}**{% endfor %} | {# -#}
+[{{ cell(s.raw.title[:90])|replace('[', '(')|replace(']', ')') }}]({{ s.raw.url }}) {{ s.raw.source }}{% if s.raw.is_auction %}, auction, {{ s.raw.bids or 0 }} bids{% if s.raw.auction_ends_at %}, ends {{ s.raw.auction_ends_at.strftime('%d %b %H:%M') }}{% endif %}{% endif %}{% for d in s.duplicates %}; also {{ d }}{% endfor %}{% for x in s.verdict_reasons %}; **{{ cell(x) }}**{% endfor %}{% for x in s.validation.invalid %}; ⚠ **impossible config: {{ cell(x) }}**{% endfor %} | {# -#}
 {% if sp %}{{ v.model_key or sp.model or '?' }}, {{ v.cpu_key or sp.cpu or 'CPU ?' }}, {{ sp.ram_gb ~ ' GB' if sp.ram_gb else 'RAM ?' }}, {{ v.gpu_key or sp.gpu or 'GPU ?' }}, {{ (sp.ssd_gb ~ ' GB SSD') if sp.ssd_gb else 'SSD ?' }}, {{ sp.screen.value }}{% if sp.keyboard_layout %}, {{ cell(sp.keyboard_layout) }}{% endif %}{% else %}{{ cell(s.extraction_error) }}{% endif %} | {# -#}
 {% if sp %}{{ sp.condition.value }}{% if sp.warranty_until %}, warranty to {{ sp.warranty_until }}{% elif sp.warranty_months %}, {{ sp.warranty_months }} months warranty{% endif %}{% if sp.charger_included == false %}, no charger{% endif %}{% endif %} | {# -#}
 {{ s.raw.seller.name or '' }}{% if s.raw.seller.name %}, {% endif %}{{ s.raw.seller.type.value }}{% if s.raw.seller.feedback_count is not none %}, {{ s.raw.seller.feedback_count }} fb{% endif %} | {# -#}
@@ -17,7 +17,7 @@
 {%- endmacro -%}
 # {{ r.target.name }}: best deals
 
-Run {{ generated }}. Prices landed in France, VAT included. ECB rates of {{ r.rates.day }} (1 GBP = {{ "%.4f"|format(gbp) }} EUR). \* = includes estimated parts.
+Run {{ generated }}. Prices landed in France, VAT included. ECB rates of {{ r.rates.day }} (1 GBP = {{ "%.4f"|format(gbp) }} EUR). \* = includes estimated parts. ⚠ = the listing claims a configuration the model never had; check with the seller.
 
 **Sources:** {% for name, st in r.source_status.items() %}{{ name }} ({{ st }}){{ ", " if not loop.last }}{% endfor %}
 

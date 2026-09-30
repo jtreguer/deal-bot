@@ -101,14 +101,16 @@ def apply_hard_filters(s: Scored, target: Target) -> None:
     if spec.locked:
         reject("locked (BIOS, Computrace or MDM)")
 
+    # A RAM or GPU value the model never had is a listing error: the real value is unknown, so it
+    # cannot justify a rejection. The listing stays in with its `validation.invalid` flag.
     if spec.ram_gb is None:
         hold("RAM not stated")
-    elif spec.ram_gb < hf.ram_gb_min:
+    elif spec.ram_gb < hf.ram_gb_min and "ram" not in v.invalid_fields:
         reject(f"RAM {spec.ram_gb} GB < {hf.ram_gb_min} GB")
 
     if v.gpu_key is None:
         hold("GPU not stated" if not spec.gpu else f"GPU {spec.gpu!r} not recognised")
-    elif v.gpu_key in hf.gpu_exclude:
+    elif v.gpu_key in hf.gpu_exclude and "gpu" not in v.invalid_fields:
         reject(f"GPU {v.gpu_key} excluded")
 
     match s.raw.delivery:
