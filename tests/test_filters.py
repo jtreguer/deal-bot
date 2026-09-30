@@ -14,6 +14,8 @@ from deal_bot.models import Delivery, Location, Scored, Verdict
         ("Dell Precision 5680 Klappdeckel Display komplett", "400", "part or accessory"),
         ("Dell Inspiron 5680 Gaming PC i7", "600", "no target model mentioned"),
         ("Dell Precision 5680 16 inch", "150", "price under 300 EUR"),
+        ("Dell Precision 5680 i7-13800H 32GB", "1500", None),
+        ("Dell Precision 5680 i7-13800H 32GB", "1500.01", "price over 1500 EUR"),
     ],
 )
 def test_prefilter(kb, target, rates, title, price, reason):
@@ -111,3 +113,9 @@ def test_impossible_ram_is_flagged_not_rejected(kb, target):
 def test_possible_low_ram_is_still_rejected(kb, target):
     s = _filtered(kb, target, ram_gb=16)
     assert s.verdict == Verdict.REJECT and not s.validation.invalid
+
+
+def test_price_ceiling_converts_currency(kb, target, rates):
+    # GBP 1,300 is about EUR 1,520: over the ceiling although the number is lower.
+    listing = make_listing(title="Dell Precision 5680 i7-13800H 32GB", price="1300", currency="GBP")
+    assert prefilter(listing, kb, target, rates) == "price over 1500 EUR"

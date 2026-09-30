@@ -17,6 +17,8 @@ class HardFilters(BaseModel):
     gpu_exclude: list[str] = Field(default_factory=list)
     exclude_conditions: list[str] = Field(default_factory=list)
     price_floor_eur: Decimal = Decimal(0)
+    # Listed price in EUR, before shipping and import charges. None = no ceiling.
+    price_ceiling_eur: Decimal | None = None
 
 
 class Buyer(BaseModel):

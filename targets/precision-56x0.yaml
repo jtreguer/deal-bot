@@ -8,6 +8,7 @@ hard_filters:
   gpu_exclude: [rtx-a1000, rtx-1000-ada, integrated]
   exclude_conditions: [for_parts]
   price_floor_eur: 300
+  price_ceiling_eur: 1500   # listed price, before shipping and import charges
 buyer:
   country: FR
   postcode: "75001"

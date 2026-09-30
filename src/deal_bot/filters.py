@@ -44,8 +44,11 @@ def prefilter(listing: RawListing, kb: KnowledgeBase, target: Target, rates: Rat
         eur = rates.to_eur(listing.price.amount, listing.price.currency)
     except ValueError:
         return f"unsupported currency {listing.price.currency}"
-    if eur < target.hard_filters.price_floor_eur:
-        return f"price under {target.hard_filters.price_floor_eur} EUR"
+    hf = target.hard_filters
+    if eur < hf.price_floor_eur:
+        return f"price under {hf.price_floor_eur} EUR"
+    if hf.price_ceiling_eur is not None and eur > hf.price_ceiling_eur:
+        return f"price over {hf.price_ceiling_eur} EUR"
     return None
 
 

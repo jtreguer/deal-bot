@@ -100,6 +100,9 @@ def _run(target, kb, prices, rates):
 
 
 def test_survey_slice_end_to_end(target, kb, prices, rates, tmp_path):
+    # The survey slice includes listings above the target's price ceiling; this test is about scoring.
+    target = target.model_copy(deep=True)
+    target.hard_filters.price_ceiling_eur = None
     r = _run(target, kb, prices, rates)
     by_id = {s.raw.native_id: s for s in r.items}
 
