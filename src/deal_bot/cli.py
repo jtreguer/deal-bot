@@ -58,7 +58,7 @@ def run(
 
     result = run_pipeline(target, adapters, kb, load_prices(target.prices), rates, ClaudeExtractor(store, model), http)
     store.record_run(target.slug, result.source_status, result.items)
-    html, md, _ = write_reports(result, ROOT / "reports" / target.slug)
+    write_reports(result, ROOT / "reports" / target.slug)
 
     for name, status in result.source_status.items():
         typer.echo(f"{name:20} {status}")
@@ -66,7 +66,8 @@ def run(
     for i, s in enumerate(result.ranked[:10], 1):
         flag = "⚠" if s.validation.invalid else " "
         typer.echo(f"{i:2}. {s.landed.total_eur:>8} EUR  {s.discount:+.0%}  risk {s.risk:>3} {flag} {s.raw.title[:70]}")
-    typer.echo(f"\nReport: {html}\n        {md}")
+    latest = ROOT / "reports" / target.slug / "latest"
+    typer.echo(f"\nReport: {latest}.html (browser) or {latest}.md")
 
 
 @app.command()

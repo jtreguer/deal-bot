@@ -116,7 +116,8 @@ def test_survey_slice_end_to_end(target, kb, prices, rates, tmp_path):
     html, md, js = write_reports(r, tmp_path)
     text = html.read_text()
     assert "318922405121" in text and "Leboncoin" in text
-    assert js.exists()
+    assert js.exists() and '"description"' not in js.read_text()
+    assert (tmp_path / "latest.md").read_text() == md.read_text()
     table = md.read_text()
     assert "318922405121" in table and "Leboncoin" in table
     assert "&#" not in table and "&amp;" not in table  # Markdown is not HTML-escaped
