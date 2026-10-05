@@ -2,7 +2,7 @@ name: Dell Precision 5680/5690 and ThinkPad P1 Gen 5/Gen 6
 slug: precision-56x0-thinkpad-p1
 models: [precision-5680, precision-5690, thinkpad-p1-gen5, thinkpad-p1-gen6]
 prices: [precision-56x0, thinkpad-p1]
-# Adapters use each query's last word to pre-select titles, hence both P1 spellings.
+# Search terms, with both P1 spellings sellers use. Results are kept when they match a model alias.
 queries:
   - "precision 5680"
   - "precision 5690"

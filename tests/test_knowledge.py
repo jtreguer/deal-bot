@@ -1,15 +1,6 @@
 import pytest
 from conftest import make_spec
 
-from deal_bot.config import ROOT, load_gpu_patterns, load_models, load_target
-from deal_bot.knowledge import KnowledgeBase
-
-
-@pytest.fixture(scope="module")
-def p1_kb():
-    target = load_target(ROOT / "targets" / "thinkpad-p1-g5-g6.yaml")
-    return KnowledgeBase(load_models(target.models), load_gpu_patterns())
-
 
 @pytest.mark.parametrize(
     ("text", "key", "warns"),
@@ -102,6 +93,8 @@ def test_validate_clean_listing(kb):
         ("ThinkPad P1 G6 i9-13900H RTX 4000 Ada", "thinkpad-p1-gen6"),
         ("Lenovo P1 Gen6 16 pouces", "thinkpad-p1-gen6"),
         ("ThinkPad P1 5e génération", "thinkpad-p1-gen5"),
+        ("LENOVO THINKPAD P1 /G5 NVIDIA RTX A4500 WQUXGA", "thinkpad-p1-gen5"),
+        ("Lenovo THINKPAD P1/G6 Wquxga Touch+Pen", "thinkpad-p1-gen6"),
         ("Lenovo 21FV001GUS Workstation", "thinkpad-p1-gen6"),
         ("ThinkPad P15 Gen 2 i7", None),
         ("ThinkPad P16 Gen 1 RTX A2000", None),

@@ -38,6 +38,16 @@ def kb(target):
 
 
 @pytest.fixture(scope="session")
+def p1_target():
+    return load_target(ROOT / "targets" / "thinkpad-p1-g5-g6.yaml")
+
+
+@pytest.fixture(scope="session")
+def p1_kb(p1_target):
+    return KnowledgeBase(load_models(p1_target.models), load_gpu_patterns())
+
+
+@pytest.fixture(scope="session")
 def prices(target):
     return load_prices(target.prices)
 

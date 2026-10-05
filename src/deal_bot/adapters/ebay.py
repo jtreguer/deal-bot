@@ -2,8 +2,9 @@
 
 One search per marketplace and query, restricted to the laptop category. The same item
 shows up on several marketplaces, so results are merged by legacy item ID. getItem is
-called only for listings that could be a target laptop: it adds the item specifics, the
-description, shipping to the buyer and eBay's quoted import charges.
+called only for listings whose title names a target model (a model alias from the
+knowledge base) and is not a part: it adds the item specifics, the description, shipping
+to the buyer and eBay's quoted import charges.
 
 The developer account opted out of marketplace account deletion notifications as "not
 persisting eBay data". Seller usernames, and the legal name and address getItem returns
@@ -25,9 +26,10 @@ from urllib.parse import quote
 
 import httpx
 
-from deal_bot.adapters.base import Http
+from deal_bot.adapters.base import Http, progress
 from deal_bot.config import Target
 from deal_bot.filters import looks_like_part
+from deal_bot.knowledge import KnowledgeBase
 from deal_bot.models import Delivery, Location, Money, Protection, RawListing, SellerInfo, SellerType, SourcePolicy
 
 log = logging.getLogger(__name__)
@@ -212,24 +214,35 @@ class EbayAdapter:
             if offset >= page.get("total", 0) or offset >= MAX_OFFSET:
                 return
 
-    def search(self, target: Target, http: Http) -> Iterable[RawListing]:
+    def search(self, target: Target, kb: KnowledgeBase, http: Http) -> Iterable[RawListing]:
         http.host_intervals.setdefault("api.ebay.com", self.interval)
         found: dict[str, tuple[str, dict]] = {}  # legacy ID -> (marketplace, summary)
         for marketplace in self.marketplaces:
+            results = 0
             for q in target.queries:
                 for s in self._search(http, marketplace, q, target):
+                    results += 1
                     # Prefer the item's home marketplace: its URL and language match the seller's.
                     if s["legacyItemId"] not in found or s.get("listingMarketplaceId") == marketplace:
                         found[s["legacyItemId"]] = (marketplace, s)
+            progress.info("ebay %s: %d results, %d distinct items so far", marketplace, results, len(found))
 
-        numbers = [re.compile(r"\b" + q.split()[-1] + r"\b") for q in target.queries]
+        wanted = {
+            legacy_id
+            for legacy_id, (_, s) in found.items()
+            if kb.mentions_any_model(s["title"]) and not looks_like_part(s["title"])
+        }
+        progress.info("ebay: fetching details for %d of %d items", len(wanted), len(found))
         viewer = f"{target.buyer.country}-{target.buyer.postcode}"
+        fetched = 0
         for legacy_id, (marketplace, summary) in found.items():
             detail = None
-            title = summary["title"]
-            if any(n.search(title) for n in numbers) and not looks_like_part(title):
+            if legacy_id in wanted:
                 try:
                     detail = self._get(http, f"item/{quote(summary['itemId'])}", marketplace, target)
                 except httpx.HTTPStatusError as e:  # ended between search and getItem, or a bad item
                     log.warning("ebay getItem %s: %s", legacy_id, e.response.status_code)
+                fetched += 1
+                if fetched % 25 == 0:
+                    progress.info("ebay: details %d/%d", fetched, len(wanted))
             yield parse_item(summary, detail, target.buyer.country, viewer)

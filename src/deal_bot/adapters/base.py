@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
 import threading
 import time
@@ -14,7 +15,11 @@ from urllib.robotparser import RobotFileParser
 import httpx
 
 from deal_bot.config import Target
+from deal_bot.knowledge import KnowledgeBase
 from deal_bot.models import RawListing
+
+# Progress lines for the terminal; the CLI gives this logger its own handler.
+progress = logging.getLogger("deal_bot.progress")
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36"
 
@@ -23,7 +28,9 @@ class Adapter(Protocol):
     name: str
     tier: str  # A: API/feed, B: plain HTML, C: real browser, M: manual
 
-    def search(self, target: Target, http: Http) -> Iterable[RawListing]: ...
+    def search(self, target: Target, kb: KnowledgeBase, http: Http) -> Iterable[RawListing]:
+        """Listings that could be a target model. kb.mentions_any_model decides, before any per-item request."""
+        ...
 
 
 class Blocked(Exception):

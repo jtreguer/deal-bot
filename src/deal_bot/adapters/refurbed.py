@@ -9,8 +9,9 @@ from decimal import Decimal
 
 from selectolax.parser import HTMLParser
 
-from deal_bot.adapters.base import Http, json_ld
+from deal_bot.adapters.base import Http, json_ld, progress
 from deal_bot.config import Target
+from deal_bot.knowledge import KnowledgeBase
 from deal_bot.models import Delivery, Location, Money, Protection, RawListing, SellerInfo, SellerType, SourcePolicy
 
 _COUNTRY = {"fr": "FR", "de": "DE", "at": "AT", "nl": "NL", "it": "IT", "be": "BE"}
@@ -53,6 +54,12 @@ def parse_product(html: str, url: str, domain: str) -> RawListing | None:
     )
 
 
+def slug_matches(link: str, kb: KnowledgeBase) -> bool:
+    """Search results include unrelated products (phones, other generations). The slug names the
+    model in short form, e.g. /p/lenovo-tp-p1g5-i7-12800h/123b/ or /p/dell-precision-5680-13800h-16/456aa/."""
+    return kb.mentions_any_model(re.sub(r"[-/]", " ", link))
+
+
 class RefurbedAdapter:
     tier = "B"
 
@@ -60,15 +67,16 @@ class RefurbedAdapter:
         self.domains = domains
         self.name = "refurbed"
 
-    def search(self, target: Target, http: Http) -> Iterable[RawListing]:
-        numbers = [q.split()[-1] for q in target.queries]
+    def search(self, target: Target, kb: KnowledgeBase, http: Http) -> Iterable[RawListing]:
         for domain in self.domains:
             base = f"https://www.refurbed.{domain}"
             links: set[str] = set()
             for q in target.queries:
                 html = http.get(f"{base}/search/", query=q).text
-                links |= {link for link in re.findall(r'href="(/p/[^"]+/)"', html) if any(n in link for n in numbers)}
-            for link in sorted(links):
+                links |= {link for link in re.findall(r'href="(/p/[^"]+/)"', html) if slug_matches(link, kb)}
+            progress.info("refurbed.%s: %d product pages to fetch", domain, len(links))
+            for i, link in enumerate(sorted(links), 1):
                 url = base + link
+                progress.info("refurbed.%s: page %d/%d %s", domain, i, len(links), link)
                 if listing := parse_product(http.get(url).text, url, domain):
                     yield listing

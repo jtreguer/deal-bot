@@ -30,6 +30,16 @@ DATA = ROOT / "data"
 load_dotenv(ROOT / ".env")
 
 
+def show_progress() -> None:
+    """Timestamped progress lines on stderr, whatever the -v level."""
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter("%(asctime)s %(message)s", "%H:%M:%S"))
+    logger = logging.getLogger("deal_bot.progress")
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
+    logger.propagate = False  # -v would print each line twice
+
+
 def build_adapters(sources: dict, only: set[str] | None) -> list[Adapter]:
     adapters: list[Adapter] = [ShopifyAdapter(ShopConfig(**c)) for c in sources.get("shopify", [])]
     adapters += [WooCommerceAdapter(ShopConfig(**c)) for c in sources.get("woocommerce", [])]
@@ -54,6 +64,7 @@ def run(
 ) -> None:
     """Collect, score and rank listings; write HTML, Markdown and JSON reports."""
     logging.basicConfig(level=logging.INFO if verbose else logging.WARNING, format="%(levelname)s %(message)s")
+    show_progress()
     target = load_target(target_file)
     kb = KnowledgeBase(load_models(target.models), load_gpu_patterns())
     store = Store(DATA / "deal_bot.sqlite")
@@ -91,12 +102,13 @@ def collect(
     interval: Annotated[float, typer.Option(help="Seconds between requests to one host")] = 5.0,
 ) -> None:
     """Fetch listings and apply the prefilter only. No LLM calls; for checking adapters."""
+    show_progress()
     target = load_target(target_file)
     kb = KnowledgeBase(load_models(target.models), load_gpu_patterns())
     http = Http(min_interval=interval)
     rates = load_rates(DATA / "fx", http.client)
     adapters = build_adapters(load_sources(sources_file), set(only) if only else None)
-    listings, status = collect_listings(adapters, target, http)
+    listings, status = collect_listings(adapters, target, kb, http)
     for name, st in status.items():
         typer.echo(f"{name:20} {st}")
     for x in listings:

@@ -2,7 +2,7 @@ name: Lenovo ThinkPad P1 Gen 5/Gen 6
 slug: thinkpad-p1-g5-g6
 models: [thinkpad-p1-gen5, thinkpad-p1-gen6]
 prices: thinkpad-p1
-# Adapters use each query's last word to pre-select titles, hence both spellings.
+# Search terms, with both spellings sellers use. Results are kept when they match a model alias.
 queries: ["thinkpad p1 gen 5", "thinkpad p1 gen 6", "thinkpad p1 g5", "thinkpad p1 g6"]
 hard_filters:
   ram_gb_min: 32

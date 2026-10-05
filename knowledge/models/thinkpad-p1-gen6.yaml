@@ -6,7 +6,7 @@ label: Lenovo ThinkPad P1 Gen 6
 brand: lenovo
 release_year: 2023
 aliases:
-  - '\bp1\s*(gen|g)\s*-?\s*6\b'
+  - '\bp1\s*/?\s*(gen|g)\s*-?\s*6\b'
   - '\bp1\s+6(th|e|ème)?\s*(gen|génération|generation)'
   - '\b21f[vw]'
 ram_soldered: false

@@ -6,14 +6,14 @@ Both platforms expose a public catalogue: Shopify at /products.json and WooComme
 
 from __future__ import annotations
 
-import re
 from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from decimal import Decimal
 
-from deal_bot.adapters.base import Http
+from deal_bot.adapters.base import Http, progress
 from deal_bot.config import Target
+from deal_bot.knowledge import KnowledgeBase
 from deal_bot.models import Delivery, Location, Money, Protection, RawListing, SellerInfo, SellerType, SourcePolicy
 
 
@@ -52,11 +52,6 @@ class ShopConfig:
         )
 
 
-def _query_words(target: Target) -> list[re.Pattern]:
-    # "precision 5680" -> match titles containing 5680 with "precision" anywhere
-    return [re.compile(r"\b" + q.split()[-1] + r"\b") for q in target.queries]
-
-
 class ShopifyAdapter:
     tier = "A"
 
@@ -65,11 +60,10 @@ class ShopifyAdapter:
         self.name = cfg.name
         self.max_pages = max_pages
 
-    def parse(self, products: list[dict], target: Target) -> Iterable[RawListing]:
-        wanted = _query_words(target)
+    def parse(self, products: list[dict], kb: KnowledgeBase) -> Iterable[RawListing]:
         for p in products:
             title = p["title"]
-            if not any(w.search(title) for w in wanted):
+            if not kb.mentions_any_model(title):
                 continue
             for v in p["variants"]:
                 variant = v.get("title") or ""
@@ -92,12 +86,13 @@ class ShopifyAdapter:
                     available=bool(v.get("available")),
                 )
 
-    def search(self, target: Target, http: Http) -> Iterable[RawListing]:
+    def search(self, target: Target, kb: KnowledgeBase, http: Http) -> Iterable[RawListing]:
         for page in range(1, self.max_pages + 1):
             products = http.get(f"{self.cfg.base_url}/products.json", limit=250, page=page).json()["products"]
             if not products:
                 return
-            yield from self.parse(products, target)
+            progress.info("%s: catalogue page %d, %d products", self.name, page, len(products))
+            yield from self.parse(products, kb)
 
 
 class WooCommerceAdapter:
@@ -107,11 +102,10 @@ class WooCommerceAdapter:
         self.cfg = cfg
         self.name = cfg.name
 
-    def parse(self, products: list[dict], target: Target) -> Iterable[RawListing]:
-        wanted = _query_words(target)
+    def parse(self, products: list[dict], kb: KnowledgeBase) -> Iterable[RawListing]:
         for p in products:
             title = p["name"]
-            if not any(w.search(title) for w in wanted):
+            if not kb.mentions_any_model(title):
                 continue
             prices = p["prices"]
             amount = Decimal(prices["price"]) / (10 ** prices["currency_minor_unit"])
@@ -129,11 +123,12 @@ class WooCommerceAdapter:
                 available=bool(p.get("is_in_stock")) and bool(p.get("is_purchasable", True)),
             )
 
-    def search(self, target: Target, http: Http) -> Iterable[RawListing]:
+    def search(self, target: Target, kb: KnowledgeBase, http: Http) -> Iterable[RawListing]:
         seen: set[str] = set()
         for q in target.queries:
             products = http.get(f"{self.cfg.base_url}/wp-json/wc/store/v1/products", search=q, per_page=100).json()
-            for listing in self.parse(products, target):
+            progress.info("%s: %d products for %r", self.name, len(products), q)
+            for listing in self.parse(products, kb):
                 if listing.native_id not in seen:
                     seen.add(listing.native_id)
                     yield listing

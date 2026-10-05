@@ -5,7 +5,7 @@ label: Lenovo ThinkPad P1 Gen 5
 brand: lenovo
 release_year: 2022
 aliases:
-  - '\bp1\s*(gen|g)\s*-?\s*5\b'
+  - '\bp1\s*/?\s*(gen|g)\s*-?\s*5\b'
   - '\bp1\s+5(th|e|ème)?\s*(gen|génération|generation)'
   - '\b21d[cd]'
 ram_soldered: false
