@@ -1,0 +1,17 @@
+# Sources: Lenovo PSREF ThinkPad P1 Gen 6 spec sheet (processors, graphics, memory: two DDR5
+# SO-DIMM slots, up to 96 GB) and Lenovo support (machine types 21FV, 21FW). Checked 2026-10-05.
+# PSREF lists no model without a discrete GPU.
+key: thinkpad-p1-gen6
+label: Lenovo ThinkPad P1 Gen 6
+brand: lenovo
+release_year: 2023
+aliases:
+  - '\bp1\s*(gen|g)\s*-?\s*6\b'
+  - '\bp1\s+6(th|e|ème)?\s*(gen|génération|generation)'
+  - '\b21f[vw]'
+ram_soldered: false
+ram_gb: [16, 32, 64, 96]  # SO-DIMM: any size up to the last one is plausible
+cpus: [i7-13700h, i7-13800h, i9-13900h]
+gpus: [rtx-a1000, rtx-2000-ada, rtx-3500-ada, rtx-4000-ada, rtx-5000-ada, rtx-4060, rtx-4080, rtx-4090]
+screens: [fhd_plus, uhd_plus_oled]
+screen_inches: 16

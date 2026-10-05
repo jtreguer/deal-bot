@@ -1,0 +1,16 @@
+# Sources: Lenovo PSREF ThinkPad P1 Gen 5 spec sheet (processors, graphics, memory: two DDR5
+# SO-DIMM slots, up to 64 GB) and Lenovo support (machine types 21DC, 21DD). Checked 2026-10-05.
+key: thinkpad-p1-gen5
+label: Lenovo ThinkPad P1 Gen 5
+brand: lenovo
+release_year: 2022
+aliases:
+  - '\bp1\s*(gen|g)\s*-?\s*5\b'
+  - '\bp1\s+5(th|e|ème)?\s*(gen|génération|generation)'
+  - '\b21d[cd]'
+ram_soldered: false
+ram_gb: [8, 16, 32, 64]   # SO-DIMM: any size up to the last one is plausible
+cpus: [i7-12700h, i7-12800h, i9-12900h]
+gpus: [integrated, rtx-a1000, rtx-a2000, rtx-a3000, rtx-a4500, rtx-a5500, rtx-3070-ti, rtx-3080-ti]
+screens: [fhd_plus, uhd_plus_oled]
+screen_inches: 16

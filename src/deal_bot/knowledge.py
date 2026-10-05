@@ -73,6 +73,8 @@ class KnowledgeBase:
             invalid("cpu", f"CPU {v.cpu_key} was never offered in the {info.label}")
         if v.gpu_key and v.gpu_key not in info.gpus:
             invalid("gpu", f"GPU {spec.gpu!r} was never offered in the {info.label}")
-        if spec.ram_gb and spec.ram_gb not in info.ram_gb:
+        if spec.ram_gb and info.ram_soldered and spec.ram_gb not in info.ram_gb:
             invalid("ram", f"{spec.ram_gb} GB RAM is not a factory option (RAM is soldered)")
+        elif spec.ram_gb and spec.ram_gb > max(info.ram_gb):
+            invalid("ram", f"{spec.ram_gb} GB RAM is more than the {info.label} takes")
         return v

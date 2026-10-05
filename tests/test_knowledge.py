@@ -1,6 +1,15 @@
 import pytest
 from conftest import make_spec
 
+from deal_bot.config import ROOT, load_gpu_patterns, load_models, load_target
+from deal_bot.knowledge import KnowledgeBase
+
+
+@pytest.fixture(scope="module")
+def p1_kb():
+    target = load_target(ROOT / "targets" / "thinkpad-p1-g5-g6.yaml")
+    return KnowledgeBase(load_models(target.models), load_gpu_patterns())
+
 
 @pytest.mark.parametrize(
     ("text", "key", "warns"),
@@ -19,6 +28,10 @@ from conftest import make_spec
         ("A2000Ada", "rtx-2000-ada", True),
         ("NVIDA RTX 2000", "rtx-2000-ada", True),
         ("RTX 4090 16GB", "rtx-4090", False),
+        ("NVIDIA RTX A3000 12GB", "rtx-a3000", False),
+        ("RTX A5500 16GB", "rtx-a5500", False),
+        ("GeForce RTX 3080 Ti", "rtx-3080-ti", False),
+        ("RTX 4080 12GB", "rtx-4080", False),
         ("Intel Iris Xe Graphics", "integrated", False),
         ("Intel Arc", "integrated", False),
         ("some mystery card", None, False),
@@ -80,3 +93,30 @@ def test_validate_clean_listing(kb):
     v = kb.validate(make_spec(), "Dell Precision 5680")
     assert (v.model_key, v.cpu_key, v.gpu_key) == ("precision-5680", "i7-13800h", "rtx-2000-ada")
     assert v.invalid == v.warnings == []
+
+
+@pytest.mark.parametrize(
+    ("title", "key"),
+    [
+        ("Lenovo ThinkPad P1 Gen 5 i7-12800H 32GB RTX A2000", "thinkpad-p1-gen5"),
+        ("ThinkPad P1 G6 i9-13900H RTX 4000 Ada", "thinkpad-p1-gen6"),
+        ("Lenovo P1 Gen6 16 pouces", "thinkpad-p1-gen6"),
+        ("ThinkPad P1 5e génération", "thinkpad-p1-gen5"),
+        ("Lenovo 21FV001GUS Workstation", "thinkpad-p1-gen6"),
+        ("ThinkPad P15 Gen 2 i7", None),
+        ("ThinkPad P16 Gen 1 RTX A2000", None),
+        ("ThinkPad P1 Gen 4 RTX A2000", None),
+        ("ThinkPad X1 Extreme Gen 5", None),
+    ],
+)
+def test_match_p1_model(p1_kb, title, key):
+    assert p1_kb.match_model(title) == key
+
+
+def test_validate_upgradeable_ram(p1_kb):
+    def ram_invalid(ram_gb):
+        spec = make_spec(model="ThinkPad P1 Gen 5", cpu="i7-12800H", gpu="RTX A2000", ram_gb=ram_gb)
+        return "ram" in p1_kb.validate(spec, "").invalid_fields
+
+    assert not ram_invalid(48)
+    assert ram_invalid(96)

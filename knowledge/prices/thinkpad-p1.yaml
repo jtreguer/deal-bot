@@ -1,0 +1,40 @@
+# Fair-value priors in EUR, landed in France, VAT included.
+# Rough guesses, not yet checked against a survey; phase 3 recalibrates them from history.
+base:
+  thinkpad-p1-gen5: 900
+  thinkpad-p1-gen6: 1200
+# Reference config the base price describes. Deltas are relative to it.
+# The GPU reference is the mid-range card of each generation.
+reference: {cpu_class: i7, ram_gb: 32, gpu: rtx-a2000 / rtx-2000-ada, screen: fhd_plus, ssd_gb: 1000, condition: used_good}
+gpu:
+  integrated: -350
+  rtx-a1000: -150
+  rtx-a2000: 0
+  rtx-a3000: 150
+  rtx-a4500: 300
+  rtx-a5500: 400
+  rtx-3070-ti: 100
+  rtx-3080-ti: 250
+  rtx-2000-ada: 0
+  rtx-4060: 0
+  rtx-3500-ada: 300
+  rtx-4080: 300
+  rtx-4000-ada: 450
+  rtx-4090: 450
+  rtx-5000-ada: 650
+cpu_class: {i7: 0, i9: 60}
+# SO-DIMM RAM can be upgraded, so it moves the price less than soldered RAM.
+ram_gb: {8: -120, 16: -70, 24: -40, 32: 0, 48: 50, 64: 110, 96: 200}
+screen: {fhd_plus: 0, uhd_plus_oled: 120}
+ssd_per_tb: 60
+condition:
+  new: 600
+  open_box: 350
+  refurb_excellent: 120
+  refurb_good: 80
+  refurb_fair: -50
+  used_like_new: 40
+  used_good: 0
+  used_fair: -100
+  unknown: 0
+warranty_per_month: 15

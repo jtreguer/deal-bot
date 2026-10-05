@@ -9,6 +9,13 @@
 - {key: rtx-a1000, pattern: '\ba\s*-?\s*1000'}
 - {key: rtx-a2000, pattern: '\ba\s*-?\s*2000'}
 - {key: rtx-4090, pattern: '4090'}
+- {key: rtx-a3000, pattern: '\ba\s*-?\s*3000'}
+- {key: rtx-a4500, pattern: '\ba\s*-?\s*4500'}
+- {key: rtx-a5500, pattern: '\ba\s*-?\s*5500'}
+- {key: rtx-3070-ti, pattern: '3070'}
+- {key: rtx-3080-ti, pattern: '3080'}
+- {key: rtx-4060, pattern: '4060'}
+- {key: rtx-4080, pattern: '4080'}
 - {key: rtx-2000-ada, pattern: 'rtx\s*2000\b', warn: "'RTX 2000' without 'Ada' is ambiguous"}
 - {key: rtx-1000-ada, pattern: 'rtx\s*1000\b', warn: "'RTX 1000' without 'Ada' is ambiguous"}
 - {key: integrated, pattern: 'iris|intel\s*arc|\barc\b|integrated|uhd graphics|intégr|integriert|\buma\b'}
