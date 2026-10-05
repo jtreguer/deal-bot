@@ -16,8 +16,9 @@ def warranty_months_left(spec: ExtractedSpec, today: date) -> int:
     return spec.warranty_months or 0
 
 
-def fair_value(spec: ExtractedSpec, v: Validation, prices: PriceModel, today: date) -> FairValue | None:
-    if v.model_key not in prices.base:
+def fair_value(spec: ExtractedSpec, v: Validation, books: list[PriceModel], today: date) -> FairValue | None:
+    prices = next((p for p in books if v.model_key in p.base), None)
+    if prices is None:
         return None
     ref = prices.reference
     parts: list[tuple[str, Decimal]] = [(f"base {v.model_key}", prices.base[v.model_key])]

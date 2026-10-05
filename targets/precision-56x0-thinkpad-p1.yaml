@@ -1,0 +1,33 @@
+name: Dell Precision 5680/5690 and ThinkPad P1 Gen 5/Gen 6
+slug: precision-56x0-thinkpad-p1
+models: [precision-5680, precision-5690, thinkpad-p1-gen5, thinkpad-p1-gen6]
+prices: [precision-56x0, thinkpad-p1]
+# Adapters use each query's last word to pre-select titles, hence both P1 spellings.
+queries:
+  - "precision 5680"
+  - "precision 5690"
+  - "thinkpad p1 gen 5"
+  - "thinkpad p1 gen 6"
+  - "thinkpad p1 g5"
+  - "thinkpad p1 g6"
+hard_filters:
+  ram_gb_min: 32
+  gpu_exclude: [rtx-a1000, rtx-1000-ada, integrated]
+  exclude_conditions: [for_parts]
+  price_floor_eur: 300
+  price_ceiling_eur: 1500   # listed price, before shipping and import charges
+buyer:
+  country: FR
+  postcode: "75001"
+  vat_basis: incl
+pickup_zones:
+  - {name: Paris, postcodes: ["75*"]}
+  - {name: Bordeaux, postcodes: ["33000", "33100", "33200", "33300", "33800"]}
+  - {name: Pau, postcodes: ["64000"]}
+  - {name: Biarritz, lat: 43.4832, lon: -1.5586, radius_km: 50}
+ranking:
+  risk_weight: 0.004
+  suspicious_risk: 60
+  protection_penalty: {platform: 0.0, retailer: 0.0, pickup: 0.03, none: 0.08}
+alerts:
+  min_discount_pct: 15

@@ -51,7 +51,7 @@ class Target(BaseModel):
     name: str
     slug: str
     models: list[str]
-    prices: str
+    prices: str | list[str]  # price files; a listing uses the one whose `base` has its model
     queries: list[str]
     hard_filters: HardFilters
     buyer: Buyer
@@ -108,8 +108,9 @@ def load_gpu_patterns() -> list[GpuPattern]:
     return [GpuPattern.model_validate(p) for p in _load(KNOWLEDGE / "gpus.yaml")]
 
 
-def load_prices(name: str) -> PriceModel:
-    return PriceModel.model_validate(_load(KNOWLEDGE / "prices" / f"{name}.yaml"))
+def load_prices(names: str | list[str]) -> list[PriceModel]:
+    names = [names] if isinstance(names, str) else names
+    return [PriceModel.model_validate(_load(KNOWLEDGE / "prices" / f"{n}.yaml")) for n in names]
 
 
 def load_sources(path: Path) -> dict:

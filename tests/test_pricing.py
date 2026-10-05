@@ -3,7 +3,9 @@ from decimal import Decimal
 
 from conftest import TODAY, make_listing, make_spec
 
+from deal_bot.config import ROOT, load_gpu_patterns, load_models, load_prices, load_target
 from deal_bot.fairvalue import fair_value
+from deal_bot.knowledge import KnowledgeBase
 from deal_bot.landed import clearance_fee, landed_cost
 from deal_bot.models import Condition, Delivery, Money, Screen, SourcePolicy
 
@@ -93,6 +95,16 @@ def test_fair_value_records_assumptions(kb, prices):
     fv = fair_value(spec, kb.validate(spec, ""), prices, TODAY)
     assert fv.value_eur == Decimal(1250)
     assert len(fv.assumptions) == 3
+
+
+def test_fair_value_picks_the_price_file_for_the_model():
+    target = load_target(ROOT / "targets" / "precision-56x0-thinkpad-p1.yaml")
+    kb = KnowledgeBase(load_models(target.models), load_gpu_patterns())
+    books = load_prices(target.prices)
+    dell = make_spec(gpu="3500 ADA")
+    p1 = make_spec(model="ThinkPad P1 Gen 6", gpu="3500 ADA")
+    assert fair_value(dell, kb.validate(dell, ""), books, TODAY).value_eur == Decimal(1250 + 550)
+    assert fair_value(p1, kb.validate(p1, ""), books, TODAY).value_eur == Decimal(1200 + 300)
 
 
 def test_landed_swiss_seller_zero_rated_strips_swiss_vat(rates):
